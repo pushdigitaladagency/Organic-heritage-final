@@ -5,29 +5,6 @@ import './Home.css';
 import Link from "next/link";
 import { useRef, useEffect } from 'react';
 
-const PRELOADER_SESSION_KEY = 'organicHeritagePreloaderShown';
-let preloaderShownInMemory = false;
-
-function shouldShowPreloader() {
-  if (preloaderShownInMemory) {
-    return false;
-  }
-
-  try {
-    if (window.sessionStorage.getItem(PRELOADER_SESSION_KEY) === 'true') {
-      preloaderShownInMemory = true;
-      return false;
-    }
-
-    window.sessionStorage.setItem(PRELOADER_SESSION_KEY, 'true');
-  } catch {
-    // If sessionStorage is unavailable, still avoid repeating during this app session.
-  }
-
-  preloaderShownInMemory = true;
-  return true;
-}
-
 /* ------------------------------------------------------------------ */
 /*  Inline SVG icon set (replaces external icons so build is portable) */
 /* ------------------------------------------------------------------ */
@@ -152,16 +129,10 @@ function Home() {
 
   useEffect(() => {
     let timer;
-    const showPreloader = shouldShowPreloader();
-
-    if (showPreloader) {
-      setIsLoading(true);
-      timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
-    } else {
+    setIsLoading(true);
+    timer = setTimeout(() => {
       setIsLoading(false);
-    }
+    }, 2000);
 
     if (videoRef.current) {
       // Set speed to 0.5x for a slow-motion background effect
