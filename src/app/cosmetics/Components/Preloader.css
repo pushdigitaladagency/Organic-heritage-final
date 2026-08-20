@@ -1,0 +1,200 @@
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f2ea;
+  overflow: hidden;
+}
+
+/* ---------- Curtains (split exit) ---------- */
+.preloader__curtain {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  /* background: #f4f2ea; */
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+  z-index: 1;
+}
+
+.preloader__curtain--top {
+  top: 0;
+  transform: translateY(0%);
+}
+
+.preloader__curtain--bottom {
+  bottom: 0;
+  transform: translateY(0%);
+}
+
+/* Exit: curtains split apart */
+.preloader--exit .preloader__curtain--top {
+  transform: translateY(-100%);
+}
+
+.preloader--exit .preloader__curtain--bottom {
+  transform: translateY(100%);
+}
+
+/* ---------- Center content ---------- */
+.preloader__center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: preloader-fade-in 0.6s ease forwards;
+}
+
+.preloader--exit .preloader__center {
+  animation: preloader-fade-out 0.35s ease forwards;
+}
+
+@keyframes preloader-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes preloader-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-16px); }
+}
+
+/* ---------- Logo ---------- */
+.preloader__logo-wrap {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  /* background: #fff; */
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+ 
+
+  animation: logo-pulse 2s ease-in-out infinite;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.preloader__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes logo-pulse {
+  0%,100% { transform: scale(1); }
+  50%      {  transform: scale(1.04); }
+}
+
+/* ---------- Brand name ---------- */
+.preloader__brand {
+  font-family: "Outfit", sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #5f7f52;
+  font-weight: 500;
+}
+
+/* ---------- Progress bar ---------- */
+.preloader__track {
+  width: 180px;
+  height: 2px;
+  background: rgba(79, 109, 66, 0.18);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloader__bar {
+  height: 100%;
+  background: linear-gradient(90deg, #8aaf78, #4f6d42);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* ---------- Tagline ---------- */
+.preloader__tagline {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  color: #a0a090;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+   Applied globally — add these classes to any element you want
+   to animate when it enters the viewport.
+   ============================================================ */
+
+/* Base hidden state */
+.reveal,
+.reveal-up,
+.reveal-left,
+.reveal-right,
+.reveal-img {
+  opacity: 0;
+  transition-duration: 0.75s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-property: opacity, transform;
+  will-change: opacity, transform;
+}
+
+/* Stagger delay helpers */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* Fade up (default) */
+.reveal,
+.reveal-up {
+  transform: translateY(40px);
+}
+
+/* Fade from left */
+.reveal-left {
+  transform: translateX(-48px);
+}
+
+/* Fade from right */
+.reveal-right {
+  transform: translateX(48px);
+}
+
+/* Image clip reveal */
+.reveal-img {
+  transform: scale(1.06);
+  transform-origin: center bottom;
+}
+
+/* Visible state (added by IntersectionObserver) */
+.reveal.is-visible,
+.reveal-up.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-img.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Mobile: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

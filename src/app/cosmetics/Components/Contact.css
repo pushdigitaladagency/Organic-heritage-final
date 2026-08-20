@@ -1,0 +1,940 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Outfit:wght@100..900&display=swap');
+
+[data-oh="cosmetics"] .contact-section {
+    background: #f5f2ea;
+    padding: 0vw 5vw 4vw;
+  overflow: hidden;
+}
+
+[data-oh="cosmetics"] .contact-container {
+  display: flex;
+  justify-content: space-between;
+  /* gap: 60px; */
+  align-items: center;
+}
+
+[data-oh="cosmetics"] .contact-left {
+  flex: 1;
+  margin-left: 16px;
+  position: relative;
+}
+
+[data-oh="cosmetics"] .contact-tag {
+     letter-spacing: 2px;
+    color: #5b7754;
+    margin-bottom: 15px;
+    margin-left: 78px;
+    font-size: 17px;
+    margin-top: 201px;
+}
+[data-oh="cosmetics"] .contact-main-wrapper {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    width: 94%;
+    margin-left: 156px;
+    display: grid;
+}
+[data-oh="cosmetics"] .contact-left h2 {
+     color: #1f1f1f;
+    font-family: Libre Caslon Text, serif;
+        font-size: 76px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-left: 71px;
+}
+
+[data-oh="cosmetics"] .contact-left h2 span {
+  color: #5b7754;
+  font-style: italic;
+}
+
+[data-oh="cosmetics"] .contact-text {
+  margin-top: 25px;
+  max-width: 500px;
+  font-size: 21px;
+  line-height: 1.8;
+  color: #555;
+  margin-left: 70px;
+}
+
+[data-oh="cosmetics"] .contact-image {
+  width: 569px;
+  margin-top: -138px;
+  margin-left: -112px;
+}
+
+[data-oh="cosmetics"] .contact-right {
+  flex: 1;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 29px;
+  width: 1315px;
+  display: grid;
+}
+
+[data-oh="cosmetics"] .contact-card {
+  background: #fff;
+  padding: 35px;
+  border-radius: 24px;
+  border: 1px solid #e8e2d8;
+  transition: 0.3s;
+}
+
+[data-oh="cosmetics"] .contact-card:hover {
+  transform: translateY(-5px);
+}
+
+[data-oh="cosmetics"] .icon-circle {
+  width: 55px;
+  height: 55px;
+  background: #d8ecd0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+[data-oh="cosmetics"] .contact-card h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #222;
+  font-weight: 400;
+  font-family: "Libre Caslon Text", serif;
+}
+
+[data-oh="cosmetics"] .contact-error-text {
+  display: block;
+  color: #d32f2f;
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+[data-oh="cosmetics"] .success-message {
+  margin-top: 52px;
+  color: #2e7d32;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+[data-oh="cosmetics"] .contact-card p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* CONTACT SECTION */
+
+[data-oh="cosmetics"] .contact-wrapper-section {
+  background: #f5f2ea;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  /* padding: 180px; */
+  display: flex;
+  margin-left: 0px;
+  /* gap: 90px; */
+  padding-bottom: 179px;
+}
+
+/* MAIN CONTAINER */
+
+[data-oh="cosmetics"] .contact-main-wrapper {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  width: 94%;
+  display: grid;
+ margin-left: 152px;
+}
+
+/* LEFT SIDE */
+
+[data-oh="cosmetics"] .contact-form-side {
+  width: 76%;
+}
+
+[data-oh="cosmetics"] .contact-heading {
+  font-size: 48px;
+  font-weight: 500;
+  color: #1d1d1d;
+  font-family: "Libre Caslon Text", serif;
+  margin-bottom: 40px;
+  line-height: 1.2;
+      
+        
+}
+
+/* FORM */  
+
+[data-oh="cosmetics"] .contact-input-flex {   
+  display: flex;
+  gap: 20px;
+}
+
+[data-oh="cosmetics"] .contact-input-box {
+  width: 100%;
+  margin-bottom: 44px;
+}
+
+[data-oh="cosmetics"] .leaf-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+[data-oh="cosmetics"] .divider-line {
+  background: #b8bea9;
+  width: 62px;
+  height: 1px;
+  margin-bottom: 20px;
+}
+
+[data-oh="cosmetics"] .leaf-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-oh="cosmetics"] .leaf-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
+
+[data-oh="cosmetics"] .contact-input-field,
+[data-oh="cosmetics"] .contact-textarea-field {
+  width: 100%;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 16px;
+
+  padding: 18px 20px;
+
+  background: #fff;
+
+  font-size: 15px;
+  color: #222;
+
+  outline: none;
+
+  transition: 0.3s ease;
+}
+
+/* TEXTAREA */
+
+[data-oh="cosmetics"] .contact-textarea-field {
+  resize: none;
+}
+
+/* PLACEHOLDER */
+
+[data-oh="cosmetics"] .contact-input-field::placeholder,
+[data-oh="cosmetics"] .contact-textarea-field::placeholder {
+  color: #999;
+}
+
+/* FOCUS */
+
+[data-oh="cosmetics"] .contact-input-field:focus,
+[data-oh="cosmetics"] .contact-textarea-field:focus {
+  border-color: #5d7f4d;
+
+  box-shadow: 0 0 0 4px rgba(93, 127, 77, 0.1);
+}
+
+/* BUTTON */
+
+[data-oh="cosmetics"] .contact-submit-btn {
+  background: #5d7f4d;
+  color: white;
+
+  border: none;
+  border-radius: 40px;
+
+  padding: 16px 42px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  display: flex;
+  transition: 0.3s ease;
+      width: 227px;
+}
+
+[data-oh="cosmetics"] .contact-submit-btn:hover {
+  transform: translateY(-2px);
+
+  background: #49653d;
+}
+
+/* ERROR */
+
+[data-oh="cosmetics"] .contact-error-text {
+  display: block;
+
+  color: red;
+  font-size: 13px;
+
+  margin-top: 6px;
+}
+
+/* RIGHT SIDE */
+
+[data-oh="cosmetics"] .contact-map-side {
+  border-radius: 28px;
+  width: 610px;
+  height: 226px;
+  padding: 55px;
+  position: relative;
+  top: -228px;
+}
+
+/* MAP */
+
+[data-oh="cosmetics"] .contact-live-map {
+  border-radius: 22px;
+  width: 141%;
+  height: 625px;
+  overflow: hidden;
+  left: 20px;
+  margin-left: -131px;
+}
+
+[data-oh="cosmetics"] .contact-live-map iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* LOCATION CARD */
+
+[data-oh="cosmetics"] .contact-location-card {
+  background: #f5f2ea;
+  border-radius: 20px;
+  width: 124%;
+  margin: -182px auto 19px -85px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 10px 25px #00000014;
+}
+
+/* LOCATION TITLE */
+
+[data-oh="cosmetics"] .contact-location-title {
+  font-size: 34px;
+  font-weight: 500;
+
+  color: #1d1d1d;
+
+  margin-bottom: 12px;
+}
+
+/* LOCATION TEXT */
+
+[data-oh="cosmetics"] .contact-location-description {
+  font-size: 15px;
+  line-height: 1.8;
+
+  color: #555;
+}
+
+[data-oh="cosmetics"] .send {
+  display: flex;
+  gap: 206px;
+}
+
+[data-oh="cosmetics"] .privacy-icon {
+  display: flex;
+  gap: 15px;
+  margin-left: -29px;
+}
+
+/* ==========================================================
+   LAPTOP MEDIA QUERIES (1367px - 1700px)
+   ========================================================== */
+
+@media screen and (min-width: 1367px) and (max-width: 1800px) {
+  [data-oh="cosmetics"] .contact-section {
+    zoom: 0.8;
+    padding: 0px 4%;
+    
+  }
+
+ [data-oh="cosmetics"] .contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1750px;
+    height: 100vw;
+    margin: -318px auto;
+    gap: 149px;
+}
+  [data-oh="cosmetics"] .contact-left {
+    flex-shrink: 0;
+    max-width: 600px;
+    margin-left: 52px;
+  }
+
+  [data-oh="cosmetics"] .contact-image {
+  width: 569px;
+  margin-top: -326px;
+ margin-left: -151px;
+}
+[data-oh="cosmetics"] .contact-tag {
+     letter-spacing: 2px;
+    color: #5b7754;
+    margin-bottom: 15px;
+    margin-left: 75px;
+    font-size: 17px;
+    margin-top: 75px;
+}
+[data-oh="cosmetics"] .contact-text {
+  margin-top: 25px;
+  max-width: 500px;
+  font-size: 21px;
+  line-height: 1.8;
+  color: #555;
+      margin-left: 75px;
+}
+
+  [data-oh="cosmetics"] .contact-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1050px;
+    margin-right: 10px;
+  }
+
+  [data-oh="cosmetics"] .contact-wrapper-section {
+    margin-left: 0;
+    padding: 0px 20px;
+    zoom: 0.8;
+    justify-content: center;
+  }
+
+  [data-oh="cosmetics"] .contact-main-wrapper {
+    width: 100%;
+    max-width: 1800px;
+    margin-left: 148px;
+    justify-content: center;
+  }
+
+  [data-oh="cosmetics"] .contact-form-side {
+    width: 87%;
+    max-width: 800px;
+  }
+
+  [data-oh="cosmetics"] .contact-map-side {
+    width: 100%;
+    max-width: 700px;
+    top: -200px;
+    margin-left: 0;
+  }
+
+  [data-oh="cosmetics"] .contact-live-map {
+    width: 130%;
+    height: 551px;
+  }
+
+  [data-oh="cosmetics"] .send {
+    gap: 224px;
+  }
+}
+
+/* ==========================================================
+   LAPTOP MEDIA QUERIES (1024px - 1366px)
+   ========================================================== */
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+          [data-oh="cosmetics"] .contact-section {
+              zoom: .6;
+        max-width: 2192px;
+        margin-left: 1px;
+        padding: 164px 1%;
+    }
+[data-oh="cosmetics"] .contact-card h3 {
+    color: #222;
+    margin-bottom: 15px;
+    font-family: Libre Caslon Text, serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+[data-oh="cosmetics"] .contact-tag {
+    letter-spacing: 2px;
+    color: #5b7754;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+[data-oh="cosmetics"] .contact-card p {
+    color: #555;
+    font-size: 19px;
+    line-height: 1.7;
+}
+[data-oh="cosmetics"] .contact-heading {
+    color: #1d1d1d;
+    margin-bottom: 40px;
+    font-family: Libre Caslon Text, serif;
+    font-size: 53px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+  [data-oh="cosmetics"] .contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1750px;
+    margin: 0 auto;
+    gap: 50px;
+  }
+[data-oh="cosmetics"] .contact-left h2 {
+    color: #1f1f1f;
+    font-family: Libre Caslon Text, serif;
+    font-size: 66px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+[data-oh="cosmetics"] .contact-text {
+    color: #555;
+    max-width: 500px;
+    margin-top: 25px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+  [data-oh="cosmetics"] .contact-left {
+    flex-shrink: 0;
+    max-width: 600px;
+    margin-left: 52px;
+  }
+    [data-oh="cosmetics"] .contact-image {
+    width: 725px;
+  
+    height: auto;
+
+    margin-top: -143px;
+    margin-left: -255px;
+}
+  [data-oh="cosmetics"] .contact-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1050px;
+    margin-right: 10px;
+  }
+
+  [data-oh="cosmetics"] .contact-wrapper-section {
+    margin-left: 0;
+    padding: 100px 20px;
+    zoom: 0.6;
+    justify-content: center;
+  }
+
+  [data-oh="cosmetics"] .contact-main-wrapper {
+    width: 100%;
+  
+    margin-left: 148px;
+    justify-content: center;
+  }
+  [data-oh="cosmetics"] .privacy-icon {
+    gap: 15px;
+    margin-left: 89px;
+    display: flex;
+}
+
+  [data-oh="cosmetics"] .contact-form-side {
+    width: 87%;
+    max-width: 800px;
+  }
+
+  [data-oh="cosmetics"] .contact-map-side {
+    width: 100%;
+    max-width: 700px;
+    top: -200px;
+    margin-left: 0;
+  }
+
+  [data-oh="cosmetics"] .contact-live-map {
+    width: 130%;
+    height: 551px;
+  }
+
+  [data-oh="cosmetics"] .send {
+    gap: 224px;
+  }
+}
+
+/* ==========================================================
+   TABLET MEDIA QUERIES (640px - 1023px)
+   ========================================================== */
+
+@media screen and (min-width: 640px) and (max-width: 1023px) {
+  [data-oh="cosmetics"] .contact-section {
+    padding: 60px 5%;
+    margin-left: 0;
+  }
+
+ [data-oh="cosmetics"] .contact-container {
+        text-align: center;
+        align-items: flex-start;
+        gap: 30px;
+        width: 100%;
+        padding-top: 300px;
+        position: relative;
+        display: block;
+    }
+
+         [data-oh="cosmetics"] .contact-tag {
+        width: 140px;
+        margin: 0 auto;
+        position: absolute;
+        top: -232px;
+        left: -52px;
+        right: 0;
+    }
+
+  [data-oh="cosmetics"] .contact-left {
+    margin-left: 0;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+      [data-oh="cosmetics"] .contact-left h2 {
+        margin: 0 auto;
+        font-size: 48px;
+        position: absolute;
+        top: -196px;
+              left: 187px;
+        right: 0;
+        width: 364px;
+        text-align: left;
+    }
+         [data-oh="cosmetics"] .contact-text {
+        width: 460px;
+        /* max-width: 90%; */
+        margin: 0 auto;
+        position: absolute;
+        top: -66px;
+        left: 121px;
+        right: -554px;
+        margin-left: 159px;
+        text-align: left;
+    }
+
+    [data-oh="cosmetics"] .contact-image {
+        width: clamp(304px, 100%, 400px);
+        margin-top: -273px;
+        margin-left: -431px;
+        position: static;
+    }
+[data-oh="cosmetics"] .contact-sent{
+  margin-top: 20px;
+}
+  [data-oh="cosmetics"] .contact-right {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 0;
+    margin-right: 0;
+    gap: 20px;
+            margin-top: 122px;
+  }
+
+  [data-oh="cosmetics"] .contact-wrapper-section {
+    margin-left: 0;
+    padding: 80px 5%;
+  }
+
+  [data-oh="cosmetics"] .contact-main-wrapper {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    width: 100%;
+    gap: 50px;
+  }
+
+  [data-oh="cosmetics"] .contact-form-side {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  [data-oh="cosmetics"] .contact-heading {
+    text-align: center;
+    font-size: 42px;
+  }
+
+  [data-oh="cosmetics"] .leaf-divider {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  [data-oh="cosmetics"] .contact-map-side {
+    width: 100%;
+    height: 400px;
+    top: 0;
+    padding: 0;
+    margin-left: 0;
+  }
+
+  [data-oh="cosmetics"] .contact-live-map {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    left: 0;
+  }
+
+      [data-oh="cosmetics"] .send {
+        flex-direction: row;
+        align-items: center;
+        gap: 279px;
+    }
+
+  [data-oh="cosmetics"] .privacy-icon {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 640px){
+ [data-oh="cosmetics"] .contact-section {
+    padding: 60px 5%;
+    margin-left: 1px;
+  }
+
+ [data-oh="cosmetics"] .contact-container {
+        text-align: center;
+        align-items: flex-start;
+        gap: 30px;
+        width: 100%;
+        padding-top: 300px;
+        position: relative;
+        display: block;
+    }
+
+         [data-oh="cosmetics"] .contact-tag {
+       width: 116px;
+        margin: 0 auto;
+        position: absolute;
+        top: -232px;
+        left: -49px;
+        right: 0;
+        font-size: 14px;
+    }
+
+  [data-oh="cosmetics"] .contact-left {
+    margin-left: 0;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+          [data-oh="cosmetics"] .contact-left h2 {
+        text-align: left;
+        width: 364px;
+        margin: 0 auto;
+        font-size: 34px;
+        position: absolute;
+        top: -196px;
+       left: 96px;
+        right: 0;
+    }
+
+    [data-oh="cosmetics"] .contact-image {
+    width: 569px;
+    margin-top: -138px;
+    margin-left: -64px;
+}
+        [data-oh="cosmetics"] .contact-text {
+        text-align: left;
+        width: 253px;
+        margin: 0 auto 0 159px;
+        font-size: 14px;
+        position: absolute;
+        top: -105px;
+        left: -60px;
+        right: -554px;
+    }
+[data-oh="cosmetics"] .contact-card {
+    background: #fff;
+    border: 1px solid #e8e2d8;
+    border-radius: 24px;
+         padding: 9px 13px 6px;
+    transition: all .3s;
+    width: 172px;
+           height: 152px;
+}
+[data-oh="cosmetics"] .contact-card p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+}
+[data-oh="cosmetics"] .contact-card h3 {
+    color: #222;
+    margin-bottom: 2px;
+    font-family: Libre Caslon Text, serif;
+          font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+}
+[data-oh="cosmetics"] .contact-card p {
+    color: #555;
+ font-size: 11px;
+    line-height: 1.7;
+   text-align: left;
+}
+    [data-oh="cosmetics"] .contact-right {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 122px;
+margin-left: -8px;
+        margin-right: -4px;
+    }
+       [data-oh="cosmetics"] .contact-image {
+        width: clamp(275px, 91%, 400px);
+        margin-top: -186px;
+        margin-left: -78px;
+        position: static;
+    }
+    [data-oh="cosmetics"] .icon-circle {
+    background: #d8ecd0;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    display: flex;
+}
+[data-oh="cosmetics"] .contact-sent{
+  margin-top: 20px;
+}
+  [data-oh="cosmetics"] .contact-right {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+margin-left: -2px;
+    margin-right: 0;
+    gap: 5px;
+            margin-top: 122px;
+  }
+  [data-oh="cosmetics"] .icon-image {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  [data-oh="cosmetics"] .contact-wrapper-section {
+    margin-left: 0;
+    padding: 80px 5%;
+  }
+
+      [data-oh="cosmetics"] .contact-main-wrapper {
+        grid-template-columns: 1fr;
+        gap: 0;
+        width: 168%;
+        margin-left: 8px;
+        margin-right: -228px;
+    }
+
+      [data-oh="cosmetics"] .contact-form-side {
+        width: 59%;
+        max-width: 100%;
+  }
+
+  [data-oh="cosmetics"] .contact-heading {
+    text-align: center;
+    font-size: 32px;
+            margin-bottom: 9px;
+  }
+
+  [data-oh="cosmetics"] .leaf-divider {
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+[data-oh="cosmetics"] .contact-input-flex {
+    gap: 20px;
+    display: block;
+}
+[data-oh="cosmetics"] .contact-input-box {
+    width: 100%;
+    margin-bottom: 25px;
+}
+  [data-oh="cosmetics"] .contact-map-side {
+   width: 100%;
+        height: 400px;
+        margin-left: -102px;
+        padding: 0px;
+        top: 0;
+  }
+
+  [data-oh="cosmetics"] .contact-live-map {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    left: 0;
+  }
+[data-oh="cosmetics"] #send-btn {
+    width: 193px;
+    height: 46px;
+   margin-left: -55px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+    text-align: center;
+}
+  [data-oh="cosmetics"] .contact-submit-btn {
+    color: #fff;
+    cursor: pointer;
+    background: #5d7f4d;
+    border: none;
+    border-radius: 40px;
+    padding: 1px 84px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all .3s;
+    display: flex;
+}
+
+      [data-oh="cosmetics"] .send {
+        flex-direction: row;
+        align-items: center;
+    
+    }
+    [data-oh="cosmetics"] #snd {
+        justify-content: center;
+        align-items: center;
+        display: grid;
+        gap: 16px;
+        margin-left: 98px;
+    }
+      [data-oh="cosmetics"] .privacy-icon {
+        justify-content: center;
+        margin-left: -68px;
+    }
+
+    [data-oh="cosmetics"] .contact-live-map {
+        /* width: 73%; */
+        max-width: 344px;
+        height: 386px;
+        margin: 10px auto;
+        overflow: hidden;
+        margin-left: 96px;
+        margin-top: 35px;
+    }
+}

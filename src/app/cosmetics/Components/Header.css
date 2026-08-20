@@ -1,0 +1,559 @@
+/* ==========================================================
+   NAVBAR CSS WITH RESPONSIVE DESIGN
+   ========================================================== */
+
+/* BASE NAVBAR STYLES */
+
+[data-oh="cosmetics"] .navbar {
+  z-index: 100;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  width: 100%;
+  gap: 114px; /* reduce gap here */
+  transition: all 0.4s ease;
+  padding-left: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+[data-oh="cosmetics"] .navbar.scrolled {
+  background-color: rgba(240, 244, 236, 0.98);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+[data-oh="cosmetics"] .logo > img {
+  width: clamp(80px, 7vw, 110px);
+  order: 4;
+}
+
+/* Specific styles for scrolled state in Desktop/Laptop view */
+@media screen and (min-width: 1024px) {
+  [data-oh="cosmetics"] .navbar.scrolled {
+    margin-top: 0 !important;
+    height: 114px;
+    padding: 19px 0;
+  }
+}
+
+[data-oh="cosmetics"] .menu-toggle {
+  display: none;
+}
+
+[data-oh="cosmetics"] .nav-links {
+  display: contents;
+}
+
+[data-oh="cosmetics"] .logo {
+  width: 121px;
+  order: 4;
+}
+
+[data-oh="cosmetics"] .nav-links a:nth-child(1) {
+  order: 1;
+}
+
+[data-oh="cosmetics"] .nav-links a:nth-child(2) {
+  order: 2;
+}
+
+[data-oh="cosmetics"] .nav-links a:nth-child(3) {
+  order: 3;
+}
+
+[data-oh="cosmetics"] .nav-links a:nth-child(4) {
+  order: 5;
+}
+
+[data-oh="cosmetics"] .nav-links a:nth-child(5) {
+  order: 6;
+}
+
+[data-oh="cosmetics"] .nav-links .order-btn {
+  order: 7;
+}
+
+[data-oh="cosmetics"] .navbar a {
+  text-decoration: none;
+  color: #222;
+  transition: 0.3s;
+}
+
+[data-oh="cosmetics"] .navbar a:hover {
+  color: #5f7f4c;
+}
+
+/* SCROLL SPY — active nav link */
+[data-oh="cosmetics"] .navbar a.nav-active {
+  color: #5f7f4c;
+  position: relative;
+}
+
+[data-oh="cosmetics"] .navbar a.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #5f7f4c;
+  border-radius: 2px;
+  animation: navUnderline 0.25s ease forwards;
+}
+
+@keyframes navUnderline {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* NAV BUTTON */
+
+[data-oh="cosmetics"] .order-btn {
+  background: #5f7f4c;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+[data-oh="cosmetics"] .order-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================
+   NAVBAR MEDIA QUERIES
+   ========================================================== */
+
+/* LAPTOP (1367px - 1700px) */
+@media screen and (min-width: 1367px) and (max-width: 1700px) {
+ [data-oh="cosmetics"] .navbar {
+  justify-content: center; /* better spacing control */
+  align-items: center;
+  width: 100%;
+  margin-top: -2px;
+  font-size: clamp(15px, 1vw, 18px);
+  font-weight: 500;
+  display: flex;
+  gap: 85px; /* reduced gap */
+}
+
+  [data-oh="cosmetics"] .nav-links {
+    display: contents;
+  }
+
+  [data-oh="cosmetics"] .logo {
+    width: clamp(90px, 7vw, 135px);
+    order: 4;
+  }
+}
+
+/* TABLET (1024px - 1366px) */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  [data-oh="cosmetics"] .navbar {
+    z-index: 1000;
+    justify-content: space-evenly;
+    gap: 0px;
+    align-items: center;
+    margin-top: 14px;
+    font-weight: 500;
+    display: flex;
+    position: fixed;
+  }
+
+  [data-oh="cosmetics"] .nav-links {
+    display: contents;
+  }
+
+  [data-oh="cosmetics"] .logo {
+    width: clamp(80px, 7vw, 110px);
+    order: 4;
+  }
+}
+
+/* SMALL SCREENS (641px - 1023px) */
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  [data-oh="cosmetics"] .navbar {
+    z-index: 1000;
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+    margin-left: 0;
+    padding: 20px 19px;
+    top: 0;
+    height: 98px;
+  }
+
+  [data-oh="cosmetics"] .logo {
+    display: block;
+    width: 60px;
+    height: auto;
+    order: 0;
+  }
+
+  [data-oh="cosmetics"] .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    order: 0;
+  }
+
+  [data-oh="cosmetics"] .nav-links {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: #f7f7f3;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    transition: 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  [data-oh="cosmetics"] .nav-links.open {
+    right: 0;
+  }
+
+  [data-oh="cosmetics"] .nav-left,
+[data-oh="cosmetics"] .nav-right {
+    flex-direction: column;
+    gap: clamp(30px, 3vw, 30px);
+    margin-top: 0;
+    text-align: center;
+  }
+
+  [data-oh="cosmetics"] .logo {
+    width: clamp(92px, 9vw, 92px);
+    margin: clamp(20px, 2vw, 20px) auto;
+    display: block;
+    top: clamp(-53px, 17vw, 9px);
+    left: -338px;
+    transform: none;
+  }
+}
+
+/* MOBILE (max-width: 640px) */
+@media screen and (max-width: 640px) {
+  [data-oh="cosmetics"] .navbar {
+    width: 100%;
+    margin-left: 0;
+    padding: 0px 20px;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+
+  [data-oh="cosmetics"] .logo {
+    display: block;
+    width: 50px;
+    height: auto;
+    order: 0;
+  }
+
+  [data-oh="cosmetics"] .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    order: 0;
+  }
+
+  [data-oh="cosmetics"] .nav-links {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100vh;
+    background: #f7f7f3;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  [data-oh="cosmetics"] .nav-links.open {
+    right: 0;
+  }
+
+  [data-oh="cosmetics"] .nav-left,
+[data-oh="cosmetics"] .nav-right {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(22px, 5vw, 28px);
+    margin-top: 0;
+    align-items: center;
+  }
+
+  [data-oh="cosmetics"] .logo {
+    width: clamp(58px, 15vw, 72px);
+    margin-left: clamp(-4px, -10vw, 5px);
+    top: clamp(8px, 2vw, 10px);
+    left: 0;
+  }
+
+  [data-oh="cosmetics"] .navbar a {
+    text-decoration: none;
+    color: #222;
+    transition: 0.3s;
+    font-size: clamp(14px, 4vw, 18px);
+  }
+
+  [data-oh="cosmetics"] .navbar a:hover {
+    color: #5f7f4c;
+  }
+
+  [data-oh="cosmetics"] .order-btn {
+    background: #5f7f4c;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: clamp(12px, 3vw, 14px);
+    transition: 0.3s;
+    width: 65%;
+  }
+
+  [data-oh="cosmetics"] .order-btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* TABLET & MOBILE PORTRAIT (max-width: 900px) */
+@media screen and (max-width: 900px) {
+  [data-oh="cosmetics"] .logo {
+    width: clamp(65px, 10vw, 85px);
+  }
+}
+
+/* ==========================================================
+   ENQUIRY POPUP MODAL
+   ========================================================== */
+
+/* Backdrop overlay */
+[data-oh="cosmetics"] .enq-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 30, 15, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+[data-oh="cosmetics"] .enq-overlay--visible {
+  opacity: 1;
+}
+
+/* Modal panel – reveal scale-up effect */
+[data-oh="cosmetics"] .enq-modal {
+  background: #faf9f4;
+  border-radius: 28px;
+  padding: 44px 48px;
+  width: 100%;
+  max-width: 580px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow:
+    0 30px 80px rgba(50, 80, 40, 0.22),
+    0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transform: scale(0.82) translateY(30px);
+  opacity: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.38, 0.64, 1),
+    opacity   0.32s ease;
+  font-family: 'Outfit', sans-serif;
+}
+
+[data-oh="cosmetics"] .enq-modal--visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Modal header row */
+[data-oh="cosmetics"] .enq-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+[data-oh="cosmetics"] .enq-tag {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #5f7f4c;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+[data-oh="cosmetics"] .enq-title {
+  font-size: 36px;
+  font-weight: 400;
+  color: #1f2618;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.1;
+}
+
+[data-oh="cosmetics"] .enq-title span {
+  font-style: italic;
+  color: #5f7f4c;
+}
+
+/* Close button */
+[data-oh="cosmetics"] .enq-close {
+  background: rgba(95, 127, 76, 0.08);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #4a5e3c;
+  flex-shrink: 0;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+[data-oh="cosmetics"] .enq-close:hover {
+  background: rgba(95, 127, 76, 0.18);
+  transform: rotate(90deg);
+}
+
+/* Form layout */
+[data-oh="cosmetics"] .enq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+[data-oh="cosmetics"] .enq-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+[data-oh="cosmetics"] .enq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+[data-oh="cosmetics"] .enq-input,
+[data-oh="cosmetics"] .enq-textarea {
+  width: 100%;
+  border: 1.5px solid #d4d9cc;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 14px 18px;
+  font-size: 15px;
+  color: #2a2a2a;
+  outline: none;
+  font-family: 'Outfit', sans-serif;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+[data-oh="cosmetics"] .enq-input::placeholder,
+[data-oh="cosmetics"] .enq-textarea::placeholder {
+  color: #9ba597;
+}
+
+[data-oh="cosmetics"] .enq-input:focus,
+[data-oh="cosmetics"] .enq-textarea:focus {
+  border-color: #5f7f4c;
+  box-shadow: 0 0 0 3px rgba(95, 127, 76, 0.12);
+}
+
+[data-oh="cosmetics"] .enq-textarea {
+  resize: none;
+  min-height: 110px;
+  padding-top: 14px;
+}
+
+[data-oh="cosmetics"] .enq-error {
+  font-size: 12px;
+  color: #c0392b;
+  margin-top: 2px;
+}
+
+/* Footer row */
+[data-oh="cosmetics"] .enq-footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+[data-oh="cosmetics"] .enq-submit {
+  background: #5f7f4c;
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.25s ease;
+}
+
+[data-oh="cosmetics"] .enq-submit:hover:not(:disabled) {
+  background: #4a6539;
+  transform: translateY(-2px);
+}
+
+[data-oh="cosmetics"] .enq-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+[data-oh="cosmetics"] .enq-success {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+/* Responsive — collapse to single column on mobile */
+@media screen and (max-width: 520px) {
+  [data-oh="cosmetics"] .enq-modal {
+    padding: 30px 22px;
+    border-radius: 20px;
+  }
+
+  [data-oh="cosmetics"] .enq-row {
+    grid-template-columns: 1fr;
+  }
+
+  [data-oh="cosmetics"] .enq-title {
+    font-size: 28px;
+  }
+}

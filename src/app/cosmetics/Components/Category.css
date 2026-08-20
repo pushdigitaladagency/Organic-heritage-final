@@ -1,0 +1,802 @@
+/* ================= CATEGORY SECTION ================= */
+
+[data-oh="cosmetics"] *, html:has([data-oh="cosmetics"]), body:has([data-oh="cosmetics"]) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body:has([data-oh="cosmetics"]) {
+  background: #ecedde;
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+}
+
+[data-oh="cosmetics"] .Category-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f4f2ea;
+}
+
+/* ================= CATEGORY ================= */
+
+[data-oh="cosmetics"] .category-section {
+  width: 100%;
+  padding: 90px 160px;
+  background: #f5f2eb;
+}
+
+[data-oh="cosmetics"] .category-header {
+  margin-bottom: 55px;
+}
+
+[data-oh="cosmetics"] .category-subtitle {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #5f7f52;
+  margin-bottom: 14px;
+  font-family: sans-serif;
+}
+
+[data-oh="cosmetics"] .category-title {
+  font-size: 68px;
+  font-weight: 300;
+  color: #2c2c2c;
+  line-height: 1.1;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* ================= CATEGORY GRID ================= */
+
+[data-oh="cosmetics"] .category-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+[data-oh="cosmetics"] .category-card {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  border-radius: 36px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+   border: 2px solid transparent;
+  transition: all 0.3s ease;
+  /* shimmer plays here until .category-card-bg fires onLoad — max 3 cycles (4.5s) */
+  background: linear-gradient(90deg, #e2ddd2 25%, #ccc8bc 50%, #e2ddd2 75%);
+  background-size: 800px 100%;
+  animation: global-shimmer 1.5s 3 linear;
+}
+
+[data-oh="cosmetics"] .category-card:has(.img-loaded) {
+  animation: none;
+  background: transparent;
+}
+
+[data-oh="cosmetics"] .category-card.active::after {
+  content: "ACTIVE";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #2e7d32;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+   transform: scale(1.05);
+}
+[data-oh="cosmetics"] .category-card--view {
+  border: 3px solid #2e7d32;
+  transform: scale(1.05);
+}
+
+/* .category-card:hover, */
+[data-oh="cosmetics"] .category-card.active {
+  border: 3px solid #2e7d32;
+  transform: scale(1.05);
+}
+
+[data-oh="cosmetics"] .category-card:hover {
+  transform: translateY(-10px);
+}
+
+[data-oh="cosmetics"] .category-card.active::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  height: 6px;
+  background: #2e7d32;
+  border-radius: 12px 12px 0 0;
+  transform: scale(1.05);
+}
+
+[data-oh="cosmetics"] .category-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 28px 24px;
+}
+
+[data-oh="cosmetics"] .category-overlay h3 {
+  font-size: 40px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+}
+
+[data-oh="cosmetics"] .discover-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Cormorant Garamond", serif;
+}
+
+[data-oh="cosmetics"] .discover-btn span {
+  transition: transform 0.35s ease;
+}
+
+[data-oh="cosmetics"] .category-card:hover .discover-btn span {
+  transform: translateX(6px);
+}
+
+/* ================= FEATURED SECTION ================= */
+
+[data-oh="cosmetics"] .featured-section {
+  width: 100%;
+  background: #f5f2eb;
+  padding: 90px 160px;
+  scroll-margin-top: 130px;
+}
+
+[data-oh="cosmetics"] .featured-header {
+  margin-bottom: 50px;
+}
+
+[data-oh="cosmetics"] .featured-subtitle {
+  color: #4d7a46;
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  font-family: sans-serif;
+}
+
+[data-oh="cosmetics"] .featured-title {
+  color: #2f2f2f;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* ================= FEATURED GRID ================= */
+
+[data-oh="cosmetics"] .featured-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+/* ================= PRODUCT CARD ================= */
+
+  [data-oh="cosmetics"] .product-card {
+  width: 100%;
+  background: #f3f3f3;
+  border-radius: 32px;
+  overflow: hidden;
+  transition: 0.45s ease;
+  cursor: pointer;
+  height: 30vw;
+}
+[data-oh="cosmetics"] .category-loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  color: #6c6c6c;
+  font-size: 18px;
+}
+[data-oh="cosmetics"] .product-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ================= PRODUCT IMAGE ================= */
+
+[data-oh="cosmetics"] .product-image-wrapper {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  /* shimmer until the product image loads — max 3 cycles (4.5s) */
+  background: linear-gradient(90deg, #ebe7db 25%, #d6d2c6 50%, #ebe7db 75%);
+  background-size: 800px 100%;
+  animation: global-shimmer 1.5s 3 linear;
+}
+
+[data-oh="cosmetics"] .product-image-wrapper:has(.img-loaded) {
+  animation: none;
+  background: transparent;
+}
+
+[data-oh="cosmetics"] .product-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform-origin 0.15s ease;
+  will-change: transform, transform-origin;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+[data-oh="cosmetics"] .product-card:hover .product-image-wrapper img {
+  transform: scale(1.18);
+}
+
+/* Touch zoom — activated by JS on touchmove */
+[data-oh="cosmetics"] .product-image-wrapper--touch-zoom {
+  transform: scale(1.18) !important;
+}
+
+/* Prevent scroll conflict during touch zoom */
+[data-oh="cosmetics"] .product-image-wrapper {
+  touch-action: pan-y;
+}
+[data-oh="cosmetics"] .product-image-wrapper:has(.product-image-wrapper--touch-zoom) {
+  touch-action: none;
+}
+
+/* ================= PRODUCT CONTENT ================= */
+
+[data-oh="cosmetics"] .product-content {
+  padding: 1px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 18px;
+}
+
+[data-oh="cosmetics"] .product-content h3 {
+  color: #404040;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Cormorant Garamond", serif;
+}
+
+[data-oh="cosmetics"] .product-subtitle {
+  margin-top: 8px;
+  color: #7a7a7a;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  font-family: sans-serif;
+}
+
+/* ================= BUTTON ================= */
+
+[data-oh="cosmetics"] .arrow-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: transparent;
+  color: #1f1f1f;
+  font-size: 28px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: 0.35s ease;
+}
+
+[data-oh="cosmetics"] .product-card:hover .arrow-btn {
+  transform: translateX(5px);
+}
+
+/* ================= LAPTOP (1024px - 1800px) ================= */
+
+@media screen and (min-width: 1024px) and (max-width: 1800px) {
+  [data-oh="cosmetics"] .category-section,
+[data-oh="cosmetics"] .featured-section {
+  padding: 125px clamp(40px, 5vw, 80px)
+  }
+
+  [data-oh="cosmetics"] .category-title,
+[data-oh="cosmetics"] .featured-title {
+    font-size: clamp(48px, 5vw, 68px);
+  }
+
+  [data-oh="cosmetics"] .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(14px, 1.5vw, 24px);
+  }
+
+  [data-oh="cosmetics"] .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 28px);
+  }
+
+  [data-oh="cosmetics"] .category-card {
+    height: clamp(300px, 28vw, 430px);
+    border-radius: clamp(24px, 2.5vw, 36px);
+  }
+
+  [data-oh="cosmetics"] .category-overlay h3 {
+    font-size: clamp(26px, 2.8vw, 40px);
+  }
+
+  [data-oh="cosmetics"] .discover-btn {
+    font-size: clamp(16px, 1.6vw, 22px);
+  }
+
+  [data-oh="cosmetics"] .product-card {
+   cursor: pointer;
+        background: #f3f3f3;
+        border-radius: 32px;
+        width: 100%;
+        height: 38vw;
+        transition: all .45s;
+        overflow: hidden;
+}
+
+  [data-oh="cosmetics"] .product-image-wrapper {
+    height: clamp(320px, 32vw, 500px);
+  }
+
+  [data-oh="cosmetics"] .product-content h3 {
+    font-size: clamp(16px, 1.6vw, 22px);
+  }
+
+  [data-oh="cosmetics"] .product-card {
+  width: 100%;
+  background: #f3f3f3;
+  border-radius: 32px;
+  overflow: hidden;
+  transition: 0.45s ease;
+  cursor: pointer;
+  height: auto;
+}
+}
+
+/* ================= TABLET (641px – 1023px) ================= */
+
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  [data-oh="cosmetics"] .category-section,
+[data-oh="cosmetics"] .featured-section {
+    padding: 90px 35px;
+  }
+
+  [data-oh="cosmetics"] .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  [data-oh="cosmetics"] .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  [data-oh="cosmetics"] .category-title,
+[data-oh="cosmetics"] .featured-title {
+    font-size: clamp(40px, 6vw, 56px);
+  }
+
+  [data-oh="cosmetics"] .category-card {
+    height: clamp(260px, 48vw, 430px);
+    border-radius: clamp(24px, 3vw, 36px);
+  }
+
+  [data-oh="cosmetics"] .category-overlay h3 {
+    font-size: clamp(22px, 3.5vw, 36px);
+  }
+
+  [data-oh="cosmetics"] .discover-btn {
+    font-size: clamp(16px, 2.2vw, 22px);
+  }
+
+  [data-oh="cosmetics"] .product-card {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: 0.45s ease;
+    cursor: pointer;
+    height: auto;
+  }
+
+  [data-oh="cosmetics"] .product-image-wrapper {
+    height: clamp(200px, 100vw, 360px);
+  }
+
+  [data-oh="cosmetics"] .product-content h3 {
+    font-size: clamp(14px, 20vw, 20px);
+  }
+
+  [data-oh="cosmetics"] .product-subtitle {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1700px){
+  [data-oh="cosmetics"] .category-section,
+[data-oh="cosmetics"] .featured-section {
+    padding: 116px clamp(30px, 4vw, 60px);
+  }
+
+  [data-oh="cosmetics"] .category-title,
+[data-oh="cosmetics"] .featured-title {
+    font-size: clamp(44px, 4.5vw, 58px);
+  }
+
+  [data-oh="cosmetics"] .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  [data-oh="cosmetics"] .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  [data-oh="cosmetics"] .category-card {
+    height: clamp(280px, 24vw, 360px);
+    border-radius: 24px;
+  }
+
+  [data-oh="cosmetics"] .category-overlay {
+    padding: 20px 18px;
+  }
+
+  [data-oh="cosmetics"] .category-overlay h3 {
+    font-size: clamp(22px, 2.2vw, 30px);
+  }
+
+  [data-oh="cosmetics"] .discover-btn {
+    font-size: clamp(15px, 1.4vw, 18px);
+  }
+
+  [data-oh="cosmetics"] .product-card {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: 0.45s ease;
+    cursor: pointer;
+    height: auto;
+  }
+
+  [data-oh="cosmetics"] .product-image-wrapper {
+    height: clamp(240px, 30vw, 550px);
+  }
+
+  [data-oh="cosmetics"] .product-content {
+    padding: 20px 18px;
+  }
+
+  [data-oh="cosmetics"] .product-content h3 {
+    font-size: clamp(16px, 1.5vw, 20px);
+  }
+
+  [data-oh="cosmetics"] .product-subtitle {
+    font-size: 10px;
+  }
+}
+
+
+/* ================= MOBILE (max-width: 640px) ================= */
+
+/* --- Large Mobile (481px – 640px) --- */
+@media screen and (min-width: 640px) and (max-width: 900px) {
+  [data-oh="cosmetics"] .category-section,
+[data-oh="cosmetics"] .featured-section {
+    padding: 80px 20px;
+  }
+
+  [data-oh="cosmetics"] .category-header,
+[data-oh="cosmetics"] .featured-header {
+    margin-bottom: 32px;
+  }
+
+  [data-oh="cosmetics"] .category-subtitle,
+[data-oh="cosmetics"] .featured-subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  [data-oh="cosmetics"] .category-title,
+[data-oh="cosmetics"] .featured-title {
+    font-size: clamp(32px, 7vw, 42px);
+  }
+
+  [data-oh="cosmetics"] .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  [data-oh="cosmetics"] .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  [data-oh="cosmetics"] .category-card {
+    height: clamp(200px, 45vw, 460px);
+    border-radius: 24px;
+  }
+
+  [data-oh="cosmetics"] .category-overlay {
+    padding: 18px 18px;
+  }
+
+  [data-oh="cosmetics"] .category-overlay h3 {
+    font-size: clamp(18px, 4.5vw, 26px);
+    margin-bottom: 6px;
+  }
+
+  [data-oh="cosmetics"] .discover-btn {
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
+
+    [data-oh="cosmetics"] .product-card {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: 0.45s ease;
+    cursor: pointer;
+    height: 55vw;
+  }
+
+  [data-oh="cosmetics"] .product-image-wrapper {
+    height: clamp(240px, 45vw, 600px);
+  }
+
+  [data-oh="cosmetics"] .product-content {
+    padding: 20px 20px;
+  }
+
+  [data-oh="cosmetics"] .product-content h3 {
+    font-size: clamp(13px, 3vw, 17px);
+    line-height: 1.4;
+  }
+
+  [data-oh="cosmetics"] .product-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+   [data-oh="cosmetics"] .category-card .product-overlay h3 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    font-weight: 400;
+    transition: transform 0.5s;
+}
+
+  [data-oh="cosmetics"] .arrow-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* --- Small Mobile (max-width: 480px) --- */
+@media screen and (max-width: 480px) {
+  [data-oh="cosmetics"] .category-section,
+[data-oh="cosmetics"] .featured-section {
+    padding: 90px 16px;
+  }
+
+  [data-oh="cosmetics"] .category-header,
+[data-oh="cosmetics"] .featured-header {
+    margin-bottom: 24px;
+  }
+
+  [data-oh="cosmetics"] .category-subtitle,
+[data-oh="cosmetics"] .featured-subtitle {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+  }
+
+  [data-oh="cosmetics"] .category-title,
+[data-oh="cosmetics"] .featured-title {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  [data-oh="cosmetics"] .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  [data-oh="cosmetics"] .featured-grid {
+  grid-template-columns: 2fr 2fr;
+  gap: 11px;
+  }
+
+  [data-oh="cosmetics"] .category-card {
+    height: clamp(160px, 60vw, 220px);
+    border-radius: 20px;
+  }
+
+  [data-oh="cosmetics"] .category-overlay {
+    padding: 14px 14px;
+  }
+
+  [data-oh="cosmetics"] .category-overlay h3 {
+    font-size: clamp(15px, 4.5vw, 20px);
+    margin-bottom: 4px;
+  }
+
+  [data-oh="cosmetics"] .discover-btn {
+    font-size: clamp(12px, 3.5vw, 16px);
+    gap: 5px;
+  }
+
+  [data-oh="cosmetics"] .product-card {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.45s ease;
+    cursor: pointer;
+    height: auto;
+  }
+
+[data-oh="cosmetics"] .product-overlay h3 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: Cormorant Garamond, serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+[data-oh="cosmetics"] *, html:has([data-oh="cosmetics"]), body:has([data-oh="cosmetics"]) {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+  [data-oh="cosmetics"] .product-image-wrapper {
+    height: clamp(200px, 60vw, 280px);
+  }
+
+  [data-oh="cosmetics"] .product-content {
+    padding: 14px 16px;
+  }
+
+  [data-oh="cosmetics"] .product-content h3 {
+    font-size: clamp(15px, 4vw, 19px);
+    line-height: 1.4;
+  }
+
+  [data-oh="cosmetics"] .product-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  [data-oh="cosmetics"] .arrow-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ================= CATEGORY CARD OVERLAY / BENEFITS ================= */
+
+[data-oh="cosmetics"] .category-card-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+[data-oh="cosmetics"] .category-card:hover .category-card-bg {
+  transform: scale(1.05);
+}
+
+[data-oh="cosmetics"] .category-card.active .category-card-bg {
+  filter: blur(8px) brightness(0.8);
+  transform: scale(1.1);
+}
+
+[data-oh="cosmetics"] .category-card .product-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.05));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+[data-oh="cosmetics"] .category-card .product-overlay h3 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 400;
+  transition: transform 0.5s ease;
+}
+
+[data-oh="cosmetics"] .category-card .product-overlay p {
+  color: white;
+  font-size: 13px;
+  transition: transform 0.5s ease;
+}
+
+[data-oh="cosmetics"] .category-card.active .overlay-text h3 {
+  transform: translateY(150px);
+}
+
+[data-oh="cosmetics"] .category-card.active .product-overlay {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+[data-oh="cosmetics"] .category-card.active .benefits-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+}
+
+[data-oh="cosmetics"] .category-card .benefits-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 80%;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  z-index: 3;
+}
+
+[data-oh="cosmetics"] .category-card .benefits-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: black;
+  font-size: clamp(24px, 5vw, 32px);
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+[data-oh="cosmetics"] .category-card .benefits-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+[data-oh="cosmetics"] .category-card .benefits-content li {
+  font-family: 'Inter', sans-serif;
+  color: #4a4a4a;
+  font-size: 20px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+[data-oh="cosmetics"] .category-card .overlay-text {
+  width: 100%;
+}
+
+[data-oh="cosmetics"] .category-card .overlay-text p {
+  cursor: pointer;
+  display: inline-block;
+}
