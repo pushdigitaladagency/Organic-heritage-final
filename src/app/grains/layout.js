@@ -9,8 +9,9 @@ import "./globals.css";
 
 export const metadata = {
   metadataBase: new URL("https://organicheritage.store/grains"),
-  title: "Organic Grains",
+  title: "Organic Heritage Grains & Traditional Rice | Organic Heritage",
   description: "Organic Grains - Premium Quality Grains",
+  keywords: ["traditional organic grains"],
   icons: {
     icon: `${BASE_PATH}/logo11.png`,
   },

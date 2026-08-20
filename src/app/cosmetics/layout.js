@@ -8,8 +8,10 @@ import ScrollRevealInit from "./Components/ScrollRevealInit";
 import { asset } from "@/lib/asset";
 
 export const metadata = {
-  title: "Organic Cosmetics",
+  metadataBase: new URL("https://organicheritage.store/cosmetics"),
+  title: "Natural & Herbal Cosmetics Online | Organic Heritage",
   description: "Natural and Organic Cosmetic Products",
+  keywords: ["natural cosmetics India"],
   icons: {
     icon: asset("/images/Organic_logo.svg"),
   },

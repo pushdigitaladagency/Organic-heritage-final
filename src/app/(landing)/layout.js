@@ -6,8 +6,10 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata = {
-  title: "Organic Heritage",
+  metadataBase: new URL("https://organicheritage.store"),
+  title: "Organic Foods & Natural Personal Care | Organic Heritage",
   description: "Organic Heritage - Rooted in nature, crafted for everyday living",
+  keywords: ["organic products India"],
   icons: {
     icon: '/images/Logo.svg',
   },
