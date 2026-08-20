@@ -11,6 +11,7 @@
 // The font variables are the union of the three old layouts, declared once on
 // <html> so every section keeps the exact custom properties its CSS expects.
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import StoreProvider from "../redux/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,11 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`}
       data-scroll-behavior="smooth"
     >
-      <body>{children}</body>
+      <body>
+        <StoreProvider>
+          {children}
+        </StoreProvider>
+      </body>
     </html>
   );
 }

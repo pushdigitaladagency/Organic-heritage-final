@@ -7,6 +7,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { asset } from "@/lib/asset";
+import { useGetCategoryProductsQuery } from "@/redux/api/cosmeticsApi";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
 
@@ -39,6 +40,11 @@ export default function Category({
   const [viewproduct, setViewProduct]             = useState(null);
   // Track which slug the currently-rendered products belong to
   const [currentProductsSlug, setCurrentProductsSlug] = useState(initialSlug);
+  const [requestedProductsSlug, setRequestedProductsSlug] = useState(null);
+
+  const productsQuery = useGetCategoryProductsQuery(requestedProductsSlug, {
+    skip: !requestedProductsSlug || requestedProductsSlug === currentProductsSlug,
+  });
 
   const handleProductImageMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -104,28 +110,13 @@ export default function Category({
     ]
   };
 
-  /* ---- Fetch products for a given slug (uses backend endpoint directly) ---- */
-  const fetchProducts = async (slug) => {
+  /* ---- Request products for a category slug through RTK Query ---- */
+  const fetchProducts = (slug) => {
     if (!slug) return;
-    try {
-      setLoadingProducts(true);
-      setProductsError(null);
-      const res = await axios.get(
-        `${BASE_URL}/api/categories/${slug}/products`
-      );
-      // Normalise — backend may return plain array OR { data:[] } / { products:[] }
-      const productList = Array.isArray(res.data)
-        ? res.data
-        : res.data?.data ?? res.data?.products ?? [];
-      setProducts(productList);
-      setCurrentProductsSlug(slug);   // remember which slug these products are for
-    } catch (err) {
-      console.error("Failed to fetch products:", err);
-      setProductsError("Could not load products. Please try again.");
-      setProducts([]);
-    } finally {
-      setLoadingProducts(false);
-    }
+    if (slug === currentProductsSlug) return;
+    setLoadingProducts(true);
+    setProductsError(null);
+    setRequestedProductsSlug(slug);
   };
 
   /* ── Fetch all categories on mount / when URL slug changes ─────────────
@@ -197,6 +188,42 @@ export default function Category({
     fetchCategories();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slugFromURL]);
+
+  useEffect(() => {
+    if (!requestedProductsSlug || requestedProductsSlug === currentProductsSlug) {
+      return;
+    }
+
+    if (productsQuery.isLoading || productsQuery.isFetching) {
+      setLoadingProducts(true);
+      setProductsError(null);
+      return;
+    }
+
+    if (productsQuery.isError) {
+      console.error("Failed to fetch products:", productsQuery.error);
+      setProductsError("Could not load products. Please try again.");
+      setProducts([]);
+      setLoadingProducts(false);
+      return;
+    }
+
+    if (productsQuery.isSuccess) {
+      setProducts(productsQuery.data ?? []);
+      setCurrentProductsSlug(requestedProductsSlug);
+      setProductsError(null);
+      setLoadingProducts(false);
+    }
+  }, [
+    requestedProductsSlug,
+    currentProductsSlug,
+    productsQuery.data,
+    productsQuery.error,
+    productsQuery.isError,
+    productsQuery.isFetching,
+    productsQuery.isLoading,
+    productsQuery.isSuccess,
+  ]);
 
   /* ---- Scroll-reveal animation whenever products list changes ---- */
   useEffect(() => {

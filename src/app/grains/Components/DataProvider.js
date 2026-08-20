@@ -1,14 +1,15 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+
+import { createContext, useContext } from "react";
+import { useGetGrainCatalogueQuery } from "@/redux/api/grainsApi";
 import { ALL_STATIC_PRODUCTS, STATIC_MENU } from "../lib/staticData";
-import { getCachedGrainsData, loadGrainsData } from "../lib/grainsData";
 
 const GrainsDataContext = createContext(null);
 
 /** Read the shared, prefetched product data. */
 export const useGrainsData = () => useContext(GrainsDataContext);
 
-/** Shown until the API data arrives — unchanged from before. */
+/** Shown until the API data arrives; unchanged from before. */
 const STATIC_FALLBACK = {
   allProducts: ALL_STATIC_PRODUCTS,
   featuredProducts: ALL_STATIC_PRODUCTS.slice(0, 3), // Fallback featured
@@ -18,32 +19,19 @@ const STATIC_FALLBACK = {
 /**
  * Supplies the Grains catalogue to every page in the section.
  *
- * The request itself lives in lib/grainsData so it can be started ahead of time
- * by the Landing page and cached at module scope. That gives two paths:
+ * RTK Query now owns the server-data cache. The Context contract stays the same
+ * so existing Grains components can continue to call useGrainsData().
  *
- *  - PRELOADED (arrived from Landing): the cache is already populated, so state
- *    is seeded with the real catalogue on the FIRST render — no static→API swap,
- *    no loading state, and no request at all.
- *  - COLD (opened /grains directly): behaves exactly as it always did — static
- *    fallback first, then the API data once the single shared request resolves.
- *
- * Either way the catalogue is requested at most once per page load, including
- * when this provider unmounts and remounts as the user moves between sections.
+ * - Landing prefetch: SectionPrefetch warms getGrainCatalogue, and this hook
+ *   reuses that cache entry when the user navigates to /grains.
+ * - Direct /grains load: this hook starts the catalogue request and serves the
+ *   static fallback until API data arrives.
+ * - API failure/empty response: grainsApi resolves with null, so the static
+ *   fallback remains available exactly as before.
  */
 export default function DataProvider({ children }) {
-  const [data, setData] = useState(() => getCachedGrainsData() ?? STATIC_FALLBACK);
-
-  useEffect(() => {
-    if (getCachedGrainsData()) return; // already preloaded — nothing to request
-
-    let alive = true;
-    loadGrainsData().then((fresh) => {
-      if (alive && fresh) setData(fresh);
-    });
-    return () => {
-      alive = false;
-    };
-  }, []);
+  const { data: catalogue } = useGetGrainCatalogueQuery();
+  const data = catalogue ?? STATIC_FALLBACK;
 
   return <GrainsDataContext.Provider value={data}>{children}</GrainsDataContext.Provider>;
 }

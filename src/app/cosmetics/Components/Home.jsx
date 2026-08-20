@@ -432,7 +432,7 @@ export default function Home() {
           {/* CARD 2 */}
           <div className="philosophy-card reveal-up reveal-delay-2">
             <div className="icon-circle">
-              <img src={asset("/images/P.png")} alt="icon" loading="lazy" decoding="async" />
+              <img src={asset("/images/p.png")} alt="icon" loading="lazy" decoding="async" />
             </div>
 
 
@@ -696,7 +696,7 @@ export default function Home() {
 
             <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
               <img
-                src={asset("/images/Strawberry-lip-balm.svg")}
+                src={asset("/images/strawberry-lip-balm.svg")}
                 alt="Strawberry lip balm"
                 loading="lazy"
                 decoding="async"
