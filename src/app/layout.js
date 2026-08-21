@@ -12,6 +12,19 @@
 // <html> so every section keeps the exact custom properties its CSS expects.
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import StoreProvider from "../redux/StoreProvider";
+import { SITE_URL } from "../lib/seo";
+
+// metadataBase belongs here, once, and must be the ORIGIN — not a path.
+// The cosmetics and grains layouts each set it to
+// "https://organicheritage.store/<section>". Next resolves relative metadata
+// URLs against it using standard URL semantics, so a base carrying a path but
+// no trailing slash silently drops that last segment.
+//
+// Each section layout keeps its own title/description/keywords — those are the
+// section-level defaults every page below them inherits.
+export const metadata = {
+  metadataBase: new URL(SITE_URL),
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

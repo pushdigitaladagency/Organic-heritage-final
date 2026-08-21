@@ -7,8 +7,11 @@ import { BASE_PATH } from "./lib/asset";
 import DataProvider from "./Components/DataProvider";
 import "./globals.css";
 
+// metadataBase now lives once in the root layout — it was set to a PATH here,
+// which breaks relative URL resolution. Everything else is the grains section's
+// default metadata: every route below inherits these unless it supplies its own
+// (product pages do, from MongoDB).
 export const metadata = {
-  metadataBase: new URL("https://organicheritage.store/grains"),
   title: "Organic Heritage Grains & Traditional Rice | Organic Heritage",
   description: "Organic Grains - Premium Quality Grains",
   keywords: ["traditional organic grains"],

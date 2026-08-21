@@ -7,8 +7,11 @@ import Script from "next/script";
 import ScrollRevealInit from "./Components/ScrollRevealInit";
 import { asset } from "@/lib/asset";
 
+// metadataBase now lives once in the root layout — it was set to a PATH here,
+// which breaks relative URL resolution. Everything else is the cosmetics
+// section's default metadata: every route below inherits these unless it
+// supplies its own (products and categories do, from MongoDB).
 export const metadata = {
-  metadataBase: new URL("https://organicheritage.store/cosmetics"),
   title: "Natural & Herbal Cosmetics Online | Organic Heritage",
   description: "Natural and Organic Cosmetic Products",
   keywords: ["natural cosmetics India"],

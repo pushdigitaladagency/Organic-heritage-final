@@ -3,20 +3,15 @@ import { cache } from "react";
 /**
  * Shared server-side data layer.
  *
- * Every fetch here opts into the Next.js Data Cache via `next: { revalidate }`,
- * so the SAME request made from different routes (home, /category, /products/*)
- * is fetched once and reused across navigations instead of hitting the backend
- * every time. The React `cache()` wrapper additionally de-dupes calls within a
- * single render pass.
+ * Fetches deliberately bypass the persistent Next.js Data Cache so newly
+ * authored MongoDB SEO fields are visible immediately in generateMetadata().
+ * The React `cache()` wrapper still de-dupes calls within a single render pass.
  *
  * Normalisation / return shapes are kept identical to the previous inline
  * per-page helpers so component behaviour is unchanged.
  */
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
-
-// Revalidate cached data hourly; tags allow on-demand invalidation later.
-const REVALIDATE = 3600;
 
 /** Convert a category name to URL slug: "Lip Care" → "lip-care" */
 export const toSlug = (name = "") =>
@@ -27,7 +22,7 @@ export const toSlug = (name = "") =>
 export const getCategories = cache(async () => {
   try {
     const res = await fetch(`${BASE_URL}/api/categories`, {
-      next: { revalidate: REVALIDATE, tags: ["categories"] },
+      cache: "no-store",
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -43,7 +38,7 @@ export const getCategoryProducts = cache(async (slug) => {
   if (!slug) return [];
   try {
     const res = await fetch(`${BASE_URL}/api/categories/${slug}/products`, {
-      next: { revalidate: REVALIDATE, tags: ["products", `category:${slug}`] },
+      cache: "no-store",
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -53,18 +48,63 @@ export const getCategoryProducts = cache(async (slug) => {
   }
 });
 
+/* ---------- Single category ---------- */
+
+/**
+ * One category document, needed by the category page to read its `seo` block.
+ *
+ * Resolved out of the category list rather than its own request: the API has
+ * no /api/categories/:slug route, and getCategories() is still React-cached
+ * within the current render, so the lookup is free for that request.
+ *
+ * Matching mirrors Category.jsx — an explicit `slug`, or the name slugified.
+ *
+ * Returns undefined when the list itself is unavailable, so callers can tell
+ * "no such category" from "backend is down". See getProduct for why.
+ */
+export const getCategory = cache(async (slug) => {
+  if (!slug) return null;
+
+  const categories = await getCategories();
+  if (!categories.length) return undefined;
+
+  return (
+    categories.find((c) => c.slug === slug || toSlug(c.name) === slug) ?? null
+  );
+});
+
 /* ---------- Single product ---------- */
 
+/**
+ * One product document.
+ *
+ * Three distinct outcomes, because the page calls notFound() on a missing
+ * product and getting that wrong is expensive:
+ *
+ *   document  – found
+ *   null      – the API answered 404: this product genuinely does not exist
+ *   undefined – the request failed (network, timeout, 5xx): existence unknown
+ *
+ * Collapsing the last two into one value would mean a backend outage serves a
+ * real 404 for every product page, and Google de-indexes the whole catalogue as
+ * it recrawls. Callers must only notFound() on an explicit null.
+ */
 export const getProduct = cache(async (slug) => {
   if (!slug) return null;
   try {
     const res = await fetch(`${BASE_URL}/api/products/${slug}`, {
-      next: { revalidate: REVALIDATE, tags: ["products", `product:${slug}`] },
+      cache: "no-store",
     });
-    if (!res.ok) return null;
+
+    if (res.status === 404) return null;
+    if (!res.ok) return undefined;
+
     const data = await res.json();
-    return Array.isArray(data) ? data[0] : (data?.data ?? data);
+    const doc = Array.isArray(data) ? data[0] : (data?.data ?? data);
+
+    // An empty body or empty object is the backend's other way of saying "no".
+    return doc && Object.keys(doc).length > 0 ? doc : null;
   } catch {
-    return null;
+    return undefined;
   }
 });

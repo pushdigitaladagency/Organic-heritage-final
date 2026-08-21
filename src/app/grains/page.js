@@ -1,25 +1,18 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { BASE_PATH } from "./lib/asset";
-import Home from './Components/Home';
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import HomeClient from "./Components/HomeClient";
+import { absoluteUrl } from "@/lib/seo";
+
+// Server component purely so this route can export metadata — a client
+// component cannot. All the interactive logic moved to Components/HomeClient.js
+// unchanged; this file adds nothing to the rendered output.
+//
+// Title, description and keywords are inherited from ./layout.js, which already
+// describes this page. Only the canonical is declared here: a canonical in the
+// layout would be claimed by every grains route beneath it, including all 37
+// product pages.
+export const metadata = {
+  alternates: { canonical: absoluteUrl("/grains") },
+};
 
 export default function Page() {
-  const router = useRouter();
-  const [heroVideoReady, setHeroVideoReady] = useState(false);
-
-  // Navigate to the product's own route, e.g. /grains/product/beetroot-multivitamin-malt
-  const handleProductClick = (slug) => {
-    if (slug) router.push(`${BASE_PATH}/product/${slug}`);
-  };
-
-  return (
-    <div>
-      <Navbar />
-      <Home onProductClick={handleProductClick} onHeroVideoReady={() => setHeroVideoReady(true)} />
-      <Footer />
-    </div>
-  );
+  return <HomeClient />;
 }

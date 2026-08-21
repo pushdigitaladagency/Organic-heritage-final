@@ -1,5 +1,15 @@
 const SITE_URL = "https://organicheritage.store";
 
+// Verified against the live catalogue (/api/grains/products and
+// /api/categories/:slug/products): the 35 grains and 19 cosmetics product URLs
+// below match it exactly — no entry 404s, and nothing in the database is
+// missing from this list.
+//
+// Two grains entries were removed because no product exists behind them. They
+// were stale spellings carried over from lib/staticData.js, and listing a URL
+// that 404s wastes crawl budget and is reported as an error in Search Console:
+//   thuyamalli-idiyappam-flour  (real slug: thooyamalli-idiyappam-flour)
+//   mappillai-samba-health-mix  (real slug: mapilai-samba-health-mix)
 const routes = [
   "/",
   "/grains",
@@ -13,7 +23,6 @@ const routes = [
   "/grains/product/panchamirtha-malt",
   "/grains/product/karuppu-kavuni-idiyappam-flour",
   "/grains/product/rathasali-idiyappam-flour",
-  "/grains/product/thuyamalli-idiyappam-flour",
   "/grains/product/thooyamalli-idiyappam-flour",
   "/grains/product/mysore-malli-idiyappam-flour",
   "/grains/product/karuppu-kavuni-puttu-flour",
@@ -24,7 +33,6 @@ const routes = [
   "/grains/product/karuppu-kavuni-kozhukattai-flour",
   "/grains/product/rathasali-kozhukattai-flour",
   "/grains/product/mysore-malli-kozhukattai-flour",
-  "/grains/product/mappillai-samba-health-mix",
   "/grains/product/mapilai-samba-health-mix",
   "/grains/product/poongar-health-mix",
   "/grains/product/karuppu-kavuni-health-mix",

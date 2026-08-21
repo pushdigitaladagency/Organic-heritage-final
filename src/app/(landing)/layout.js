@@ -5,8 +5,10 @@
 import Script from "next/script";
 import "./globals.css";
 
+// metadataBase now lives once in the root layout. Everything else here is the
+// landing section's default metadata, inherited by "/" unless the page
+// overrides it.
 export const metadata = {
-  metadataBase: new URL("https://organicheritage.store"),
   title: "Organic Foods & Natural Personal Care | Organic Heritage",
   description: "Organic Heritage - Rooted in nature, crafted for everyday living",
   keywords: ["organic products India"],
