@@ -12,6 +12,9 @@ export const metadata = {
   title: "Organic Foods & Natural Personal Care | Organic Heritage",
   description: "Organic Heritage - Rooted in nature, crafted for everyday living",
   keywords: ["organic products India"],
+  verification: {
+    google: "DD7a5DLx33Gy-GMal4zTpYerTUI5pt3KUBY9H8wHXeg",
+  },
   icons: {
     icon: '/images/Logo.svg',
   },
