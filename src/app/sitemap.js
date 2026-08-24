@@ -76,6 +76,7 @@ const routes = [
   "/cosmetics/products/sanitary-pads-made-with-tapioca-fiber-100-plant-based",
 ];
 
+
 export default function sitemap() {
   return routes.map((route) => ({
     url: `${SITE_URL}${route}`,
