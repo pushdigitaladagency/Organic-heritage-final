@@ -12,6 +12,7 @@ import { cache } from "react";
  */
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
+const STORE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://organicheritage.store";
 
 /** Convert a category name to URL slug: "Lip Care" → "lip-care" */
 export const toSlug = (name = "") =>
@@ -23,6 +24,9 @@ export const getCategories = cache(async () => {
   try {
     const res = await fetch(`${BASE_URL}/api/categories`, {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -39,6 +43,9 @@ export const getCategoryProducts = cache(async (slug) => {
   try {
     const res = await fetch(`${BASE_URL}/api/categories/${slug}/products`, {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -94,6 +101,9 @@ export const getProduct = cache(async (slug) => {
   try {
     const res = await fetch(`${BASE_URL}/api/products/${slug}`, {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
     });
 
     if (res.status === 404) return null;

@@ -34,12 +34,14 @@ export default function Category({
   const [products, setProducts]               = useState(initialProducts);
   // Start with no loading spinner if the server already provided data
   const [loadingCategories, setLoadingCategories] = useState(initialCategories.length === 0);
-  const [loadingProducts, setLoadingProducts]     = useState(false);
+  const [loadingProducts, setLoadingProducts]     = useState(initialProducts.length === 0 && Boolean(initialSlug));
   const [productsError, setProductsError]         = useState(null);
   const [activeProduct, setActiveProduct]         = useState(null);
   const [viewproduct, setViewProduct]             = useState(null);
   // Track which slug the currently-rendered products belong to
-  const [currentProductsSlug, setCurrentProductsSlug] = useState(initialSlug);
+  const [currentProductsSlug, setCurrentProductsSlug] = useState(
+    initialProducts.length > 0 ? initialSlug : null
+  );
   const [requestedProductsSlug, setRequestedProductsSlug] = useState(null);
 
   const productsQuery = useGetCategoryProductsQuery(requestedProductsSlug, {

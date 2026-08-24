@@ -16,6 +16,7 @@ import { cache } from "react";
  */
 
 const BASE_URL = process.env.NEXT_PUBLIC_PRODUC_URI;
+const STORE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://organicheritage.store";
 
 /**
  * Grains pages previously did NO server-side fetching — they rendered instantly
@@ -46,6 +47,9 @@ const request = async (path) => {
   try {
     const res = await fetch(`${BASE_URL}${path}`, {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
 
