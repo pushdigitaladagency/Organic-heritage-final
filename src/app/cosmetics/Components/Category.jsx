@@ -9,7 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import { asset } from "@/lib/asset";
 import { useGetCategoryProductsQuery } from "@/redux/api/cosmeticsApi";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API || "";
 
 /* ---------------- Helpers ---------------- */
 
