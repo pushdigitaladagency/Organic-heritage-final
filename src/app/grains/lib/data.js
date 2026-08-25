@@ -15,7 +15,13 @@ import { cache } from "react";
  * metadata.
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_PRODUC_URI;
+const BACKEND_ORIGIN = (
+  process.env.BACKEND_API_ORIGIN ||
+  process.env.PRODUC_URI ||
+  process.env.NEXT_PUBLIC_PRODUC_URI ||
+  ""
+).replace(/\/+$/, "");
+const STORE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://organicheritage.store";
 
 /**
  * Grains pages previously did NO server-side fetching — they rendered instantly
@@ -41,11 +47,14 @@ const getCategoryName = (category) =>
   category?.name || category?.title || category?.categoryName || "";
 
 const request = async (path) => {
-  if (!BASE_URL) return { ok: false, status: 0, data: null };
+  if (!BACKEND_ORIGIN) return { ok: false, status: 0, data: null };
 
   try {
-    const res = await fetch(`${BASE_URL}${path}`, {
+    const res = await fetch(`${BACKEND_ORIGIN}${path}`, {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
 

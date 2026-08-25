@@ -6,7 +6,7 @@ import { fetchJson } from "../lib/fetchJson";
 import { sendContact } from "../lib/sendContact";
 import "./product.css";
 
-const BASE_URL = process.env.NEXT_PUBLIC_PRODUC_URI;
+const BASE_URL = process.env.NEXT_PUBLIC_PRODUC_URI || "";
 
 // Section icons are static (not provided by the API) — reused by index.
 const featureIcons = ["./Images/shield.svg", "./Images/hand.svg", "./Images/Antioxident.svg", "./Images/age.svg"];

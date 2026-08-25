@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { asset } from "@/lib/asset";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API || "";
 const MAILER_URL = process.env.NEXT_PUBLIC_MAILER_API;
 
 // Maps catcode → category slug for back-navigation.

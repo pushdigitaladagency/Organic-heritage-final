@@ -11,7 +11,15 @@ import { cache } from "react";
  * per-page helpers so component behaviour is unchanged.
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API;
+const BACKEND_ORIGIN = (
+  process.env.BACKEND_API_ORIGIN ||
+  process.env.PRODUC_URI ||
+  process.env.NEXT_PUBLIC_BACKEND_API ||
+  ""
+).replace(/\/+$/, "");
+const STORE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://organicheritage.store";
+
+const apiUrl = (path) => `${BACKEND_ORIGIN}${path}`;
 
 /** Convert a category name to URL slug: "Lip Care" → "lip-care" */
 export const toSlug = (name = "") =>
@@ -21,8 +29,11 @@ export const toSlug = (name = "") =>
 
 export const getCategories = cache(async () => {
   try {
-    const res = await fetch(`${BASE_URL}/api/categories`, {
+    const res = await fetch(apiUrl("/api/categories"), {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -37,8 +48,11 @@ export const getCategories = cache(async () => {
 export const getCategoryProducts = cache(async (slug) => {
   if (!slug) return [];
   try {
-    const res = await fetch(`${BASE_URL}/api/categories/${slug}/products`, {
+    const res = await fetch(apiUrl(`/api/categories/${slug}/products`), {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -92,8 +106,11 @@ export const getCategory = cache(async (slug) => {
 export const getProduct = cache(async (slug) => {
   if (!slug) return null;
   try {
-    const res = await fetch(`${BASE_URL}/api/products/${slug}`, {
+    const res = await fetch(apiUrl(`/api/products/${slug}`), {
       cache: "no-store",
+      headers: {
+        Origin: STORE_ORIGIN,
+      },
     });
 
     if (res.status === 404) return null;
