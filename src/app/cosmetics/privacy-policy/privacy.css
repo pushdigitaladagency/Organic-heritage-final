@@ -1,0 +1,113 @@
+/* ============================================================
+   PRIVACY POLICY PAGE — Cosmetics section
+   ============================================================ */
+
+/* Force navbar header to stay solid brand background with correct scrolled dimensions and no shifts */
+.cosmetics-privacy-wrapper .navbar {
+  background-color: rgba(240, 244, 236, 0.98) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  margin-top: 0 !important;
+  height: 114px !important;
+  padding: 19px 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+}
+
+.pp-page {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  padding: 140px 20px 60px !important; /* Top padding added to prevent header overlap */
+  width: 100% !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.pp-hero {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  width: 100% !important;
+  max-width: 800px !important;
+}
+
+.pp-body {
+  width: 100% !important;
+  max-width: 800px !important;
+}
+
+.pp-hero__tag {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #666666;
+}
+
+.pp-hero__title {
+  font-size: 32px;
+  margin: 10px 0;
+  color: #000000;
+}
+
+.pp-hero__sub {
+  color: #666666;
+  font-size: 14px;
+}
+
+.pp-section {
+  margin-bottom: 30px;
+}
+
+.pp-section h2 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #000000;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 5px;
+}
+
+.pp-section p {
+  margin-bottom: 15px;
+}
+
+.pp-section ul {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.pp-section li {
+  margin-bottom: 8px;
+}
+
+.pp-address {
+  font-style: normal;
+  background: #f9f9f9;
+  border: 1px solid #eaeaea;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.pp-address a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.pp-back {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+}
+
+.pp-back__link {
+  color: #0066cc;
+  text-decoration: underline;
+}

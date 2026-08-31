@@ -182,6 +182,21 @@
   font-size: 12px;
 }
 
+[data-oh="grains"] .oh-foot__privacyLink {
+  color: #ffffffb3;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+[data-oh="grains"] .oh-foot__privacyLink:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
 /* ==========================================================
    FOOTER MEDIA QUERIES
    ========================================================== */

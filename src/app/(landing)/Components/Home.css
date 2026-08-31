@@ -1402,6 +1402,21 @@ gap: calc(15px * var(--oh-scale));
   /* color: var(--oh-green-dark); */
 }
 
+[data-oh="landing"] .oh-foot__privacyLink {
+  color: #ffffffb3;
+  font-family: Inter, sans-serif;
+  font-size: calc(14px * var(--oh-scale));
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+[data-oh="landing"] .oh-foot__privacyLink:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
 /* ==========================================================
    RESPONSIVE — Desktop targets 1024 → 1700+
    Proportional only; layout unchanged.

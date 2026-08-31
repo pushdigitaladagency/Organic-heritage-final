@@ -140,7 +140,8 @@ return (
         </div>
 
         <div className="oh-foot__bottom">
-          <span>© 2026 Organic Heritage. All right reserved.</span>
+          <span>© 2026 Organic Heritage. All rights reserved.</span>
+          <a href="/cosmetics/privacy-policy" className="oh-foot__privacyLink">Privacy Policy</a>
           <span className="oh-foot__bottomBrand">ORGANIC HERITAGE — NOURISHING LIFE NATURALLY</span>
         </div>
       </footer>

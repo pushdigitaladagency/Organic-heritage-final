@@ -144,7 +144,8 @@ Thirukarugavur, Thanjavur -614302</span>
         </div>
 
         <div className="oh-foot__bottom">
-          <span>© 2026 Organic Grains. All right reserved.</span>
+          <span>© 2026 Organic Grains. All rights reserved.</span>
+          <a href="/grains/privacy-policy" className="oh-foot__privacyLink">Privacy Policy</a>
           <span className="oh-foot__bottomBrand">ORGANIC GRAINS — NOURISHING LIFE NATURALLY</span>
         </div>
       </footer>
