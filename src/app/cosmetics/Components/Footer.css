@@ -43,7 +43,7 @@
 [data-oh="cosmetics"] .oh-foot__tag {
     color: #fff;
     margin: 0px;
-    font-family: Inter, sans-serif;
+    font-family: var(--font-inter), sans-serif;
     font-size: 16px;
     line-height: 1.6;
     text-align: left;
@@ -117,7 +117,7 @@
   color: #ffffff9c;
   font-size: 16px;
   transition: 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 [data-oh="cosmetics"] .oh-foot__list a:hover {
@@ -131,7 +131,7 @@
   color: #ffffff9c;
   line-height: 1.5;
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 [data-oh="cosmetics"] .oh-foot__social {
@@ -173,7 +173,7 @@
   margin: 60px auto 0;
   padding-top: 25px;
   padding-bottom: 48px;
-  font-family: Inter, sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: 14px;
   display: flex;
 }
@@ -300,7 +300,7 @@
     color: #fff;
     margin: 0;
     line-height: 1.5;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter), sans-serif;
   }
 
   [data-oh="cosmetics"] .oh-foot__logo .logo {
@@ -494,7 +494,7 @@
 
   [data-oh="cosmetics"] .oh-foot__list--touch li,
 [data-oh="cosmetics"] .oh-foot__list--touch li * {
-    font-family: 'Inter', sans-serif !important;
+    font-family: var(--font-inter), sans-serif !important;
     gap: 12px;
   }
 

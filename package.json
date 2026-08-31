@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "optimize:grains-webp": "node scripts/optimize-webpimages.cjs",
     "start": "next start"
   },
   "dependencies": {

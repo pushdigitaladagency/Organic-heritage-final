@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { asset } from "@/lib/asset";
 import { useGetCategoryProductsQuery } from "@/redux/api/cosmeticsApi";
+import { productImageSrc } from "../lib/productImages";
+import { requestScrollRevealRefresh } from "./ScrollRevealInit";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API || "";
 
@@ -16,6 +18,34 @@ const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API || "";
 /** Convert a category name to URL slug: "Lip Care" → "lip-care" */
 const toSlug = (name = "") =>
   name.trim().toLowerCase().replace(/\s+/g, "-");
+
+const CATCODE_TO_SLUG = {
+  cat001: "lip-care",
+  cat002: "skin-care",
+  cat003: "hair-care",
+  cat004: "hygiene",
+};
+
+const SLUG_TO_CATCODE = {
+  "lip-care": "cat001",
+  "skin-care": "cat002",
+  "hair-care": "cat003",
+  "hygiene": "cat004",
+};
+
+const markImageLoaded = (image) => {
+  image.currentTarget?.classList.add("img-loaded");
+};
+
+const markAlreadyLoadedImages = () => {
+  document
+    .querySelectorAll(".Category-page img.shimmer-img")
+    .forEach((image) => {
+      if (image.complete && image.naturalWidth > 0) {
+        image.classList.add("img-loaded");
+      }
+    });
+};
 
 /* ---------------- Main Component ---------------- */
 
@@ -227,38 +257,17 @@ export default function Category({
     productsQuery.isSuccess,
   ]);
 
-  /* ---- Scroll-reveal animation whenever products list changes ---- */
+  /* ---- Sync image shimmer/reveal after server-rendered product images load ---- */
   useEffect(() => {
     if (products.length === 0) return;
 
     const frame = requestAnimationFrame(() => {
-      const els = document.querySelectorAll(
-        ".reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-img"
-      );
-      if (!els.length) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
-      );
-
-      els.forEach((el) => {
-        el.classList.remove("is-visible");
-        observer.observe(el);
-      });
-
-      return () => observer.disconnect();
+      markAlreadyLoadedImages();
+      requestScrollRevealRefresh();
     });
 
     return () => cancelAnimationFrame(frame);
-  }, [products]);
+  }, [categories, products]);
 
   /* ---- Handle category card click ---- */
   const handleCategoryClick = (category) => {
@@ -319,11 +328,11 @@ export default function Category({
                 >
                   <img
                     className="category-card-bg shimmer-img"
-                    src={asset(`/images/${item.catcode || itemSlug}.svg`)}
+                    src={asset(`/images/svg/${item.catcode || SLUG_TO_CATCODE[itemSlug] || itemSlug}.svg`)}
                     alt={item.name}
                     loading="lazy"
                     decoding="async"
-                    onLoad={e => e.currentTarget.classList.add('img-loaded')}
+                    onLoad={markImageLoaded}
                   />
 
                   <div className="product-overlay">
@@ -411,16 +420,12 @@ export default function Category({
                       onTouchCancel={handleProductImageTouchEnd}
                     >
                       <img
-                        src={
-                          item.image?.startsWith("http")
-                            ? item.image
-                            : asset(item.image?.startsWith("/images/") ? item.image : `/images/${item.image}`)
-                        }
+                        src={productImageSrc(item.image || item.slug || item.name)}
                         alt={item.name}
                         loading="lazy"
                         decoding="async"
                         className="shimmer-img"
-                        onLoad={e => e.currentTarget.classList.add('img-loaded')}
+                        onLoad={markImageLoaded}
                       />
                     </div>
 
@@ -433,9 +438,9 @@ export default function Category({
                         )}
                       </div>
 
-                      <button className="arrow-btn">
+                      <span className="arrow-btn" aria-hidden="true">
                         <ArrowRight size={22} strokeWidth={1.8} />
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </Link>

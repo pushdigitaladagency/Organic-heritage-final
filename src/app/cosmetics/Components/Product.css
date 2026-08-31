@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap');
 
 [data-oh="cosmetics"] *, html:has([data-oh="cosmetics"]), body:has([data-oh="cosmetics"]){
   margin: 0;
@@ -8,7 +7,7 @@
 
 body:has([data-oh="cosmetics"]){
   background: #ECEDDE;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 [data-oh="cosmetics"] .product-page{
@@ -180,7 +179,7 @@ body:has([data-oh="cosmetics"]){
 [data-oh="cosmetics"] .product-title{
     color: #1f2618;
     margin-bottom: 5px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 64px;
     font-weight: 500;
     line-height: 0.85;
@@ -286,7 +285,7 @@ body:has([data-oh="cosmetics"]){
   display: flex;
   justify-content: space-between;
   gap: 60px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .ritual-left {
@@ -298,7 +297,7 @@ body:has([data-oh="cosmetics"]){
   letter-spacing: 2px;
   color: #7f816f;
   margin-bottom: 18px;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 [data-oh="cosmetics"] .ritual-title {
@@ -318,14 +317,14 @@ body:has([data-oh="cosmetics"]){
   line-height: 1.5;
   color: #6d6d60;
   margin-bottom: 28px;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 [data-oh="cosmetics"] .ritual-claim {
   font-size: 18px;
   color: #3e3e34;
   font-weight: 600;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 [data-oh="cosmetics"] .ritual-right {
@@ -367,7 +366,7 @@ body:has([data-oh="cosmetics"]){
   font-size: 16px;
   line-height: 1.4;
   color: #66665b;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 [data-oh="cosmetics"] .ritual-card ol,
@@ -404,7 +403,7 @@ body:has([data-oh="cosmetics"]){
   font-weight: 600;
   margin-bottom: 12px;
   color: #333;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .variant-circle.active {
@@ -449,7 +448,7 @@ body:has([data-oh="cosmetics"]){
   font-weight: 400;
   color: #2f3528;
   margin-bottom: 18px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .contact-heading h2 span {
@@ -504,7 +503,7 @@ body:has([data-oh="cosmetics"]){
   font-size: 18px;
   color: #333;
   outline: none;
-  font-family: Inter, sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 [data-oh="cosmetics"] .contact-grid input::placeholder,
@@ -568,7 +567,7 @@ body:has([data-oh="cosmetics"]){
   /* background: #f6f5ee; */
      padding: 91px 0%;
  /* min-height: 100vh; */
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 [data-oh="cosmetics"] .related-top {
@@ -589,7 +588,7 @@ body:has([data-oh="cosmetics"]){
   font-size: 54px;
   font-weight: 400;
   color: #2f3528;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .related-title span {
@@ -644,7 +643,7 @@ body:has([data-oh="cosmetics"]){
   font-size: 17px;
   color: #2f3528;
   font-weight: 400;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
   margin-left: 20px;
 }
 
@@ -664,7 +663,7 @@ body:has([data-oh="cosmetics"]){
  align-items: center;
  min-width: 70px;
  padding: 10px 22px;
- font-family: Outfit, sans-serif;
+ font-family: var(--font-outfit), sans-serif;
  font-size: 16px;
  font-weight: 500;
  transition: all .25s;
@@ -693,7 +692,7 @@ body:has([data-oh="cosmetics"]){
   align-items: center;
   margin: 0 8px 8px 0;
   padding: 10px 20px;
-  font-family: Outfit, sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   font-size: 16px;
   font-weight: 500;
   transition: all 0.25s ease;

@@ -16,7 +16,7 @@ export const metadata = {
   description: "Natural and Organic Cosmetic Products",
   keywords: ["natural cosmetics India"],
   icons: {
-    icon: asset("/images/Organic_logo.svg"),
+    icon: asset("/images/svg/Organic_logo.svg"),
   },
 };
 

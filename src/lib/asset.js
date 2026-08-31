@@ -10,4 +10,7 @@
 // helper would silently emit the unprefixed path. Hardcoding avoids that.
 const BASE_PATH = '/cosmetics';
 
-export const asset = (p) => `${BASE_PATH}${p.startsWith('/') ? '' : '/'}${p}`;
+export const asset = (p) => {
+  if (!p) return null;
+  return `${BASE_PATH}${p.startsWith('/') ? '' : '/'}${p}`;
+};

@@ -1,5 +1,5 @@
-// Never pre-render at build time — always render on demand (avoids build-time API calls)
-export const dynamic = 'force-dynamic';
+// Revalidate catalogue data periodically so requests can use Next.js caching.
+export const revalidate = 60;
 
 import Header from "../Components/Header";
 import Category from "../Components/Category";

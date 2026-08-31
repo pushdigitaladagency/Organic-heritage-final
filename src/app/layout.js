@@ -10,8 +10,14 @@
 //
 // The font variables are the union of the three old layouts, declared once on
 // <html> so every section keeps the exact custom properties its CSS expects.
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
-import Script from "next/script";
+import {
+  Geist,
+  Geist_Mono,
+  Cormorant_Garamond,
+  Inter,
+  Outfit,
+  Libre_Caslon_Text,
+} from "next/font/google";
 import StoreProvider from "../redux/StoreProvider";
 import { SITE_URL } from "../lib/seo";
 
@@ -43,24 +49,38 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const libreCaslonText = Libre_Caslon_Text({
+  variable: "--font-libre-caslon-text",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 const GOOGLE_TAG_MANAGER_ID = "GTM-K2L9379P";
+
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${inter.variable} ${outfit.variable} ${libreCaslonText.variable}`}
       data-scroll-behavior="smooth"
     >
-      <Script id="google-tag-manager" strategy="beforeInteractive">
-        {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${GOOGLE_TAG_MANAGER_ID}');
-        `}
-      </Script>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body>
         <noscript>
           <iframe

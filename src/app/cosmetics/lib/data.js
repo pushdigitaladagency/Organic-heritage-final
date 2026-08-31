@@ -3,9 +3,9 @@ import { cache } from "react";
 /**
  * Shared server-side data layer.
  *
- * Fetches deliberately bypass the persistent Next.js Data Cache so newly
- * authored MongoDB SEO fields are visible immediately in generateMetadata().
- * The React `cache()` wrapper still de-dupes calls within a single render pass.
+ * Fetches use a short persistent Next.js Data Cache revalidation window so
+ * catalogue pages do not block on MongoDB for every request. The React `cache()`
+ * wrapper still de-dupes calls within a single render pass.
  *
  * Normalisation / return shapes are kept identical to the previous inline
  * per-page helpers so component behaviour is unchanged.
@@ -18,6 +18,7 @@ const BACKEND_ORIGIN = (
   ""
 ).replace(/\/+$/, "");
 const STORE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || "https://organicheritage.store";
+export const COSMETICS_REVALIDATE_SECONDS = 60;
 
 const apiUrl = (path) => `${BACKEND_ORIGIN}${path}`;
 
@@ -30,7 +31,7 @@ export const toSlug = (name = "") =>
 export const getCategories = cache(async () => {
   try {
     const res = await fetch(apiUrl("/api/categories"), {
-      cache: "no-store",
+      next: { revalidate: COSMETICS_REVALIDATE_SECONDS },
       headers: {
         Origin: STORE_ORIGIN,
       },
@@ -49,7 +50,7 @@ export const getCategoryProducts = cache(async (slug) => {
   if (!slug) return [];
   try {
     const res = await fetch(apiUrl(`/api/categories/${slug}/products`), {
-      cache: "no-store",
+      next: { revalidate: COSMETICS_REVALIDATE_SECONDS },
       headers: {
         Origin: STORE_ORIGIN,
       },
@@ -107,7 +108,7 @@ export const getProduct = cache(async (slug) => {
   if (!slug) return null;
   try {
     const res = await fetch(apiUrl(`/api/products/${slug}`), {
-      cache: "no-store",
+      next: { revalidate: COSMETICS_REVALIDATE_SECONDS },
       headers: {
         Origin: STORE_ORIGIN,
       },

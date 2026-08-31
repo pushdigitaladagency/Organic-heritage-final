@@ -8,10 +8,18 @@ export const BASE_PATH =
  *   "/red_wheat.png"     -> "/grains/red_wheat.png"
  *   "./Images/arrow.svg" -> "/grains/Images/arrow.svg"
  *   "Images/foo.svg"     -> "/grains/Images/foo.svg"
+ *   "./Images/foo.webp"  -> "/grains/Images/webpimages/foo.webp"
  * External URLs (http(s)://, protocol-relative //, data:) are returned untouched.
  */
 export function asset(path) {
-  if (!path) return path;
+  if (!path) return null;
   if (/^([a-z]+:)?\/\//i.test(path) || path.startsWith("data:")) return path;
-  return `${BASE_PATH}/${path.replace(/^\.?\//, "")}`;
+
+  const normalizedPath = path.replace(/^\.?\//, "");
+  const webpProductPath = normalizedPath.replace(
+    /^Images\/(?!webpimages\/)(.+\.webp(?:[?#].*)?)$/i,
+    "Images/webpimages/$1"
+  );
+
+  return `${BASE_PATH}/${webpProductPath}`;
 }

@@ -78,8 +78,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
   const [index, setIndex] = useState(0);
 
-  const totalItems = 9;
-  const maxIndex = totalItems - visibleItems;
+  const maxIndex = Math.max(0, STATIC_PUTTU.length - visibleItems);
 
   const next = () => {
     if (index < maxIndex) {
@@ -95,8 +94,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
   // Soup & Booster carousel state
   const [index3, setIndex3] = useState(0);
-  const totalItems3 = 7;
-  const maxIndex3 = totalItems3 - visibleItems;
+  const maxIndex3 = Math.max(0, STATIC_SOUP.length - visibleItems);
 
   const next3 = () => {
     if (index3 < maxIndex3) {
@@ -112,8 +110,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
   // Special Mixes carousel state
   const [index5, setIndex5] = useState(0);
-  const totalItems5 = 6;
-  const maxIndex5 = totalItems5 - visibleItems;
+  const maxIndex5 = Math.max(0, COOKIES.length - visibleItems);
 
   const next5 = () => {
     if (index5 < maxIndex5) {
@@ -129,8 +126,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
   // Other Products carousel state
   const [index6, setIndex6] = useState(0);
-  const totalItems6 = 5;
-  const maxIndex6 = totalItems6 - visibleItems;
+  const maxIndex6 = Math.max(0, VADAM_VATHAL.length - visibleItems);
 
   const next6 = () => {
     if (index6 < maxIndex6) {
@@ -884,7 +880,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
             <div className="info-box">
               <div className="info-icon">
-                <img src={asset("./Images/mobile.svg")} alt="phone" />
+                <img src={asset("./Images/icons/mobile.png")} alt="phone" />
               </div>
               <div>
                 <span className="phone">PHONE</span>
@@ -894,7 +890,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
             <div className="info-box">
               <div className="info-icon" id="email">
-                <img src={asset("./Images/mail.svg")} alt="email" id="emails" />
+                <img src={asset("./Images/icons/mail.png")} alt="email" id="emails" />
               </div>
               <div>
                 <span className="phone">EMAIL</span>
@@ -904,7 +900,7 @@ export default function Home({ onProductClick, prefetchedData, onHeroVideoReady 
 
             <div className="info-box">
               <div className="info-icon" id="location-icon">
-                <img src={asset("./Images/location.svg")} alt="location" />
+                <img src={asset("./Images/icons/location.png")} alt="location" />
               </div>
               <div>
                 <span className="phone">LOCATION</span>

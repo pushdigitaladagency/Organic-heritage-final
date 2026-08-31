@@ -163,7 +163,7 @@ export default function Navbar(){
     className="logo"
   >
     <img
-      src={asset("/images/Organic_logo.svg")}
+      src={asset("/images/svg/Organic_logo.svg")}
       alt="logo"
     />
   </Link>

@@ -126,8 +126,8 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
 }
 
 [data-oh="grains"] .back-arrow-icon {
-  width: 18px;
-  height: 18px;
+  width: 11px;
+    height: 7px;
   transform: rotate(90deg);
   /* Assuming the original arrow points right, rotate it left */
 }
@@ -177,8 +177,8 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
 }
 
 [data-oh="grains"] .arrowss {
-  width: 13px;
-  height: 14px;
+ width: 12px;
+    height: 8px;
   transition: transform 0.3s ease;
 }
 
@@ -286,6 +286,7 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
   display: flex;
   flex-direction: column;
   gap: 2vw;
+  align-self: flex-start;
 }
 
 [data-oh="grains"] .thumbs .thumb-wrapper {
@@ -315,7 +316,12 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
 }
 
 [data-oh="grains"] .dropdown-icon {
+  width: 18px;
+  height: 18px;
   margin-right: 21px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 [data-oh="grains"] .category {
@@ -324,7 +330,8 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
   letter-spacing: 3px;
   font-weight: 600;
   margin-top: 5px;
-
+  display: inline-flex;
+  align-items: center;
 }
 
 [data-oh="grains"] .product-info h1 {
@@ -446,7 +453,7 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
 }
 
 [data-oh="grains"] .icon-circle img {
-  width: 33px;
+  width: 27px;
   height: 27px;
 }
 
@@ -537,8 +544,8 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
 }
 
 [data-oh="grains"] .ingredient-icon {
-  width: 58px;
-  height: 31px;
+ width: 30px;
+    height: 30px;
 }
 
 [data-oh="grains"] .recipe-info {
@@ -2442,26 +2449,29 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
   }
 
   [data-oh="grains"] .main-image {
-    width: 94vw;
-    min-height: 60vw;
-    /* max-width: 320px; */
-    /* aspect-ratio: 1/1.5; */
-    /* margin-left: -5px; */
+    width: 94vw !important;
+    min-height: 60vw !important;
+    height: auto !important;
+    flex-shrink: 1 !important;
   }
 
   [data-oh="grains"] .thumbs {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: clamp(-4px, 1vw, 12px);
-    width: 100%;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: clamp(8px, 2.5vw, 16px) !important;
+    width: 100% !important;
   }
 
-  [data-oh="grains"] .thumbs .thumb-wrapper,
-[data-oh="grains"] .thumbs img {
-    width: clamp(65px, 18vw, 85px);
-    height: clamp(65px, 18vw, 85px);
-    flex-shrink: 0;
+  [data-oh="grains"] .thumbs .thumb-wrapper {
+    width: clamp(65px, 17vw, 80px) !important;
+    height: clamp(65px, 17vw, 80px) !important;
+    flex-shrink: 0 !important;
+  }
+
+  [data-oh="grains"] .thumbs img {
+    width: 100% !important;
+    height: 100% !important;
   }
 
   [data-oh="grains"] .product-info {
@@ -2914,7 +2924,13 @@ body:has([data-oh="grains"]).inner-page-active .navbar {
     letter-spacing: 3px;
     font-size: 10px;
     font-weight: 600;
-    width: 435px;
+    /* width: 435px; */
+  }
+
+  [data-oh="grains"] .dropdown-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
   }
 
 

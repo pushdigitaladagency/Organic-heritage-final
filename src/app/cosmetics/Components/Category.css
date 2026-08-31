@@ -8,7 +8,7 @@
 
 body:has([data-oh="cosmetics"]) {
   background: #ecedde;
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   overflow-x: hidden;
 }
 
@@ -43,7 +43,7 @@ body:has([data-oh="cosmetics"]) {
   font-weight: 300;
   color: #2c2c2c;
   line-height: 1.1;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 /* ================= CATEGORY GRID ================= */
@@ -131,7 +131,7 @@ body:has([data-oh="cosmetics"]) {
   font-weight: 300;
   color: #ffffff;
   margin-bottom: 10px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .discover-btn {
@@ -144,7 +144,7 @@ body:has([data-oh="cosmetics"]) {
   font-size: 22px;
   cursor: pointer;
   padding: 0;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .discover-btn span {
@@ -181,7 +181,7 @@ body:has([data-oh="cosmetics"]) {
   font-size: 72px;
   font-weight: 300;
   line-height: 1;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 /* ================= FEATURED GRID ================= */
@@ -278,7 +278,7 @@ body:has([data-oh="cosmetics"]) {
   font-size: 22px;
   line-height: 1.5;
   font-weight: 400;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .product-subtitle {
@@ -501,7 +501,7 @@ body:has([data-oh="cosmetics"]) {
 /* ================= MOBILE (max-width: 640px) ================= */
 
 /* --- Large Mobile (481px – 640px) --- */
-@media screen and (min-width: 640px) and (max-width: 900px) {
+@media screen and (min-width: 481px) and (max-width: 640px) {
   [data-oh="cosmetics"] .category-section,
 [data-oh="cosmetics"] .featured-section {
     padding: 80px 20px;
@@ -524,7 +524,7 @@ body:has([data-oh="cosmetics"]) {
   }
 
   [data-oh="cosmetics"] .category-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
 
@@ -582,7 +582,7 @@ body:has([data-oh="cosmetics"]) {
    [data-oh="cosmetics"] .category-card .product-overlay h3 {
     color: rgb(255, 255, 255);
     margin-bottom: 10px;
-    font-family: "Cormorant Garamond", serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 20px;
     font-weight: 400;
     transition: transform 0.5s;
@@ -660,7 +660,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .product-overlay h3 {
     color: #fff;
     margin-bottom: 10px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 18px;
     font-weight: 400;
   }
@@ -732,7 +732,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .category-card .product-overlay h3 {
   color: #fff;
   margin-bottom: 10px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 20px;
   font-weight: 400;
   transition: transform 0.5s ease;
@@ -772,7 +772,7 @@ body:has([data-oh="cosmetics"]) {
 }
 
 [data-oh="cosmetics"] .category-card .benefits-content h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-cormorant-garamond), serif;
   color: black;
   font-size: clamp(24px, 5vw, 32px);
   text-transform: capitalize;
@@ -785,7 +785,7 @@ body:has([data-oh="cosmetics"]) {
 }
 
 [data-oh="cosmetics"] .category-card .benefits-content li {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   color: #4a4a4a;
   font-size: 20px;
   line-height: 1.4;

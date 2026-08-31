@@ -6,11 +6,19 @@ export const dynamic = 'force-dynamic';
 import { notFound } from "next/navigation";
 import ProductPageClient from "./ProductPageClient";
 import { getGrainProduct } from "../../lib/data";
+import { ALL_STATIC_PRODUCTS } from "../../lib/staticData";
 import { buildMetadata } from "@/lib/seo";
+
+const PRODUCT_SLUG_ALIASES = {
+  "mappillai-samba-health-mix": "mapilai-samba-health-mix",
+  "thuyamalli-idiyappam-flour": "thooyamalli-idiyappam-flour",
+};
 
 /* ---------- Metadata ---------- */
 
 const pathForSlug = (slug) => `/grains/product/${slug}`;
+const getStaticProduct = (slug) =>
+  ALL_STATIC_PRODUCTS.find((product) => product.slug === slug) ?? null;
 
 /**
  * Title, description and keywords come from the `seo` block on the product's
@@ -23,10 +31,12 @@ const pathForSlug = (slug) => `/grains/product/${slug}`;
  */
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+  const resolvedSlug = PRODUCT_SLUG_ALIASES[slug] || slug;
+  const product = await getGrainProduct(resolvedSlug);
 
   return buildMetadata({
-    doc: await getGrainProduct(slug),
-    path: pathForSlug(slug),
+    doc: product ?? getStaticProduct(resolvedSlug),
+    path: pathForSlug(resolvedSlug),
     pathForSlug,
   });
 }
@@ -36,8 +46,10 @@ export async function generateMetadata({ params }) {
 export default async function ProductPage({ params }) {
   // In Next.js 15+, params is a Promise — must be awaited
   const { slug } = await params;
+  const resolvedSlug = PRODUCT_SLUG_ALIASES[slug] || slug;
 
-  const product = await getGrainProduct(slug);
+  const product = await getGrainProduct(resolvedSlug);
+  const staticProduct = getStaticProduct(resolvedSlug);
 
   // 404 only on an explicit 404 from the API. getGrainProduct() returns
   // undefined when the request merely failed, and that case deliberately falls
@@ -47,7 +59,7 @@ export default async function ProductPage({ params }) {
   // Checked against the live API: the only staticData slugs with no document
   // behind them are two stale spellings that SHOULD 404, so there is no
   // legitimate static-only page this rule can harm.
-  if (product === null) notFound();
+  if (product === null && !staticProduct) notFound();
 
   return <ProductPageClient />;
 }

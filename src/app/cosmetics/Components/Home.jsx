@@ -1,98 +1,27 @@
-"use client";
-
 import "./Home.css";
 
-import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { asset } from "@/lib/asset";
+import {
+  ExploreIngredientsButton,
+  FaqList,
+  HomeRouteButton,
+  PopularProductCards,
+  ProductCategoryCards,
+} from "./HomeClientBits";
 
 export default function Home() {
-  const [openIndex, setOpenIndex] = useState(null);
-  const [activeProduct, setActiveProduct] = useState(null);
-  const router = useRouter();
-
-  const handleProductImageMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    const img = e.currentTarget.querySelector("img");
-    if (img) {
-      img.style.transformOrigin = `${x}% ${y}%`;
-    }
-  };
-
-  const handleProductImageMouseLeave = (e) => {
-    const img = e.currentTarget.querySelector("img");
-    if (img) {
-      img.style.transformOrigin = "center center";
-    }
-  };
-
-  const productBenefits = {
-    "Lip Care": [
-      "Natural hydration",
-      "Chemical-free",
-      "Eco-friendly choice",
-      "Rich in nutrients"
-    ],
-    "Skin Care": [
-      "Natural hydration",
-      "Chemical-free",
-      "Eco-friendly choice",
-      "Rich in nutrients"
-    ],
-    "Hair Care": [
-      "Herbal hair oils",
-      "Natural shampoos",
-      "Hair masks",
-      "Scalp care products"
-    ],
-    "Hygiene": [
-      "Comfortable",
-      "Skin-friendly",
-      "Leak prevention",
-      "Odor control"
-    ]
-  };
-
-  const faqData = [
-    {
-      question: "Are your products suitable for daily use?",
-      answer:
-        "Yes, our products are designed for regular personal care routines.",
-    },
-
-    {
-      question: "Do you use natural ingredients?",
-      answer:
-        "We focus on herbal and naturally inspired ingredients wherever possible.",
-    },
-
-    {
-      question: "Are the products suitable for all skin types?",
-      answer:
-        "Most products are formulated for general use, though individual sensitivities may vary.",
-    },
-
-    {
-      question: "Are your products suitable for daily use?",
-      answer:
-        "Yes, our products are designed for regular personal care routines.",
-    },
-  ];
-
-
-
-
-
-
-
   return (
     <div className="hero">
 
       {/* BACKGROUND IMAGE */}
-      <img src={asset("/images/hero.jpeg")} alt="background" className="hero-bg" fetchPriority="high" decoding="async" />
+      <img
+        src={asset("/images/hero.jpeg")}
+        alt="background"
+        className="hero-bg"
+        loading="eager"
+        decoding="async"
+      />
 
 
 
@@ -132,16 +61,7 @@ export default function Home() {
   Shop Products →
 </a>
 
-           <button
-  className="explore-btn"
-  onClick={() =>
-    document.getElementById("philosophy").scrollIntoView({
-      behavior: "smooth",
-    })
-  }
->
-  Explore Ingredients
-</button>
+           <ExploreIngredientsButton />
 
           </div>
 
@@ -242,155 +162,8 @@ export default function Home() {
           </p>
 
         </div>
-
         {/* PRODUCT CARDS */}
-        <div className="products-grid">
-
-          {/* CARD 1 */}
-          <Link href="/cosmetics/category/lip-care" style={{ textDecoration: "none", color: "inherit" }}>
-            <div   className={`products-card ${
-    activeProduct === "Lip Care" ? "active" : ""
-  }`}>
-
-              <img className="prd1"
-                src={asset("/images/cat001.svg")}
-                alt="Lip Care"
-                decoding="async"
-              />
-
-              <div className="product-overlay">
-                <div className="benefits-content">
-                  <h3>Benefits</h3>
-                  <ul>
-                    {productBenefits["Lip Care"].map((benefit, i) => (
-                      <li key={i}>{i + 1}.{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="overlay-text">
-                  <h3>Lip Care</h3>
-                  <p onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setActiveProduct(activeProduct === "Lip Care" ? null : "Lip Care");
-                  }}>
-                    {activeProduct === "Lip Care" ? " " : "Discover →"}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </Link>
-
-          {/* CARD 2 */}
-          <Link href="/cosmetics/category/skin-care" style={{ textDecoration: "none", color: "inherit" }}>
-            <div   className={`products-card ${
-    activeProduct === "Skin Care" ? "active" : ""
-  }`}>
-
-              <img className="prd2"
-                src={asset("/images/cat002.svg")}
-                alt="Skin Care"
-                decoding="async"
-              />
-
-              <div className="product-overlay">
-                <div className="benefits-content">
-                  <h3>Benefits</h3>
-                  <ul>
-                    {productBenefits["Skin Care"].map((benefit, i) => (
-                      <li key={i}>{i + 1}.{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="overlay-text">
-                  <h3>Skin Care</h3>
-                  <p onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setActiveProduct(activeProduct === "Skin Care" ? null : "Skin Care");
-                  }}>
-                    {activeProduct === "Skin Care" ? " " : "Discover →"}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </Link>
-
-          {/* CARD 3 */}
-          <Link href="/cosmetics/category/hair-care" style={{ textDecoration: "none", color: "inherit" }}>
-            <div   className={`products-card ${
-    activeProduct === "Hair Care" ? "active" : ""
-  }`}>
-
-              <img className="prd2"
-                src={asset("/images/cat003.svg")}
-                alt="Hair Care"
-                decoding="async"
-              />
-
-              <div className="product-overlay">
-                <div className="benefits-content">
-                  <h3>Benefits</h3>
-                  <ul>
-                    {productBenefits["Hair Care"].map((benefit, i) => (
-                      <li key={i}>{i + 1}.{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="overlay-text">
-                  <h3>Hair Care</h3>
-                  <p onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setActiveProduct(activeProduct === "Hair Care" ? null : "Hair Care");
-                  }}>
-                    {activeProduct === "Hair Care" ? " " : "Discover →"}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </Link>
-
-          {/* CARD 4 */}
-          <Link href="/cosmetics/category/hygiene" style={{ textDecoration: "none", color: "inherit" }}>
-            <div   className={`products-card ${
-    activeProduct === "Hygiene" ? "active" : ""
-  }`}>
-
-              <img className="prd2"
-                src={asset("/images/cat004.svg")}
-                alt="Hygiene"
-                decoding="async"
-              />
-
-              <div className="product-overlay">
-                <div className="benefits-content">
-                  <h3>Benefits</h3>
-                  <ul>
-                    {productBenefits["Hygiene"].map((benefit, i) => (
-                      <li key={i}>{i + 1}.{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="overlay-text">
-                  <h3>Hygiene</h3>
-                  <p onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                   setActiveProduct("Hygiene");;
-                  }}>
-                    {activeProduct === "Hygiene" ? " " : "Discover →"}
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </Link>
-
-        </div>
+        <ProductCategoryCards />
 
       </section >
       <section className="philosophy-section" id="philosophy">
@@ -602,180 +375,8 @@ export default function Home() {
           </Link>
 
         </div>
-
         {/* GRID */}
-        <div className="pp-grid">
-
-          {/* CARD 1 */}
-          <Link href="/cosmetics/products/natural-lipstick" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="pp-card">
-
-            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
-              <img
-                src={asset("/images/herbal-lipstick.svg")}
-                alt="lipstick"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="pp-content">
-
-              <h3>
-                Natural lipstick
-              </h3>
-
-              <p>
-                NOURISHES LIPS WHILE ADDING SOFT COLOR
-              </p>
-
-            </div>
-
-          </div>
-          </Link>
-
-          {/* CARD 2 */}
-          <Link href="/cosmetics/products/herbal-hair-oil-infused-with-moringa-leaves-and-rosemary-oil" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="pp-card">
-
-            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
-              <img
-                src={asset("/images/Natural-hair-oil.svg")}
-                alt="hair oil"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="pp-content">
-
-              <h3>
-                Natural Hair Oil
-              </h3>
-
-              <p>
-                NOURISHES HAIR NATURALLY
-              </p>
-
-            </div>
-
-          </div>
-          </Link>
-
-          {/* CARD 3 */}
-          <Link href="/cosmetics/products/herbal-hair-mask-powder" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="pp-card">
-
-            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
-              <img
-                src={asset("/images/Herbal-face-pack.svg")}
-                alt="face pack"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="pp-content">
-
-              <h3>
-                Hair Mask Powder
-              </h3>
-
-              <p>
-                ENHANCES NATURAL GLOW
-              </p>
-
-            </div>
-
-          </div>
-          </Link>
-
-          {/* CARD 4 */}
-          <Link href="/cosmetics/products/strawberry-lip-balm" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="pp-card">
-
-            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
-              <img
-                src={asset("/images/strawberry-lip-balm.svg")}
-                alt="Strawberry lip balm"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="pp-content">
-
-              <h3>
-                Strawberry lipbalm
-              </h3>
-
-              <p>
-                MOISTURISES LIPS WITH NATURAL CARE
-              </p>
-
-            </div>
-
-          </div>
-          </Link>
-
-          {/* CARD 5 */}
-          <Link href="/cosmetics/products/sanitary-pads-made-with-tapioca-fiber-100-plant-based" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="pp-card">
-
-            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
-              <img
-                src={asset("/images/tapioca-sanitary-pads.svg")}
-                alt="sanitary pads"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="pp-content">
-
-              <h3>
-              Sanitary Pads
-              </h3>
-
-              <p>
-                COMFORTABLE PROTECTION
-              </p>
-
-            </div>
-
-          </div>
-          </Link>
-
-           {/* CARD 6 */}
-          <Link href="/cosmetics/products/herbal-hair-dye-1" style={{ textDecoration: "none", color: "inherit" }}>
-          <div className="pp-card">
-
-            <div className="pp-img" onMouseMove={handleProductImageMouseMove} onMouseLeave={handleProductImageMouseLeave}>
-              <img
-                src={asset("/images/herbal-hair-dye-1.svg")}
-                alt="hair dye"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="pp-content">
-
-              <h3>
-                Herbal Hair Dye 1
-              </h3>
-
-              <p>
-               NATURAL COLOURING POWDER
-              </p>
-
-            </div>
-
-          </div>
-          </Link>
-
-
-        </div>
+        <PopularProductCards />
 
       </section>
       <section className="sc">
@@ -856,42 +457,8 @@ export default function Home() {
           </p>
 
         </div>
-
         {/* RIGHT SIDE */}
-        <div className="faq-right">
-
-          {faqData.map((item, index) => (
-
-            <div className="faq-item" key={index}>
-
-              <div
-                className="faq-question"
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
-              >
-
-                <p>{item.question}</p>
-
-               <span>
-  {openIndex === index ? "⌃" : "⌄"}
-</span>
-
-              </div>
-
-              {openIndex === index && (
-
-                <div className="faq-answer">
-                  <p>{item.answer}</p>
-                </div>
-
-              )}
-
-            </div>
-
-          ))}
-
-        </div>
+        <FaqList />
       </section>
       <section className="bn">
 
@@ -919,19 +486,9 @@ export default function Home() {
 
           <div className="bn-btns">
 
-           <button
-  className="bn-shop"
-  onClick={() => router.push("/cosmetics/category")}
->
-  Shop Now →
-</button>
+           <HomeRouteButton className="bn-shop" href="/cosmetics/category">Shop Now →</HomeRouteButton>
 
-            <button
-  className="bn-contact"
-  onClick={() => router.push("/cosmetics/contact")}
->
-  Contact Us
-</button>
+            <HomeRouteButton className="bn-contact" href="/cosmetics/contact">Contact Us</HomeRouteButton>
 
           </div>
 

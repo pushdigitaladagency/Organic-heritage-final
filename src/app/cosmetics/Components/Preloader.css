@@ -98,7 +98,7 @@
 
 /* ---------- Brand name ---------- */
 .preloader__brand {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   font-size: 11px;
   letter-spacing: 4px;
   color: #5f7f52;
@@ -123,7 +123,7 @@
 
 /* ---------- Tagline ---------- */
 .preloader__tagline {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 16px;
   color: #a0a090;
   font-style: italic;

@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
 html:has([data-oh="cosmetics"]) {
   scroll-behavior: smooth;
@@ -11,7 +10,7 @@ html:has([data-oh="cosmetics"]) {
 }
 
 body:has([data-oh="cosmetics"]) {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   background: #f4f4f4;
 }
 
@@ -123,7 +122,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .hero-left h1 {
   color: #222;
   margin-bottom: 30px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 72px;
   font-weight: 400;
   line-height: 1;
@@ -152,7 +151,7 @@ body:has([data-oh="cosmetics"]) {
   margin-bottom: 35px;
   font-size: 16px;
   line-height: 1.7;
-  font-family: inter;
+  font-family: var(--font-inter);
   font-style: italic;
 }
 
@@ -174,7 +173,7 @@ body:has([data-oh="cosmetics"]) {
     font-size: 14px;
     font-weight: 100;
     transition: all .3s;
-    font-family: 'Inter';
+    font-family: var(--font-inter);
 }
 
 [data-oh="cosmetics"] .shop-btn:hover {
@@ -208,7 +207,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .stats h3 {
   font-size: 32px;
   color: white;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .stats p {
@@ -272,7 +271,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .about-content h2 {
   color: #2b2b2b;
   margin-bottom: 30px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 64px;
   font-weight: 400;
   line-height: 1.1;
@@ -315,7 +314,7 @@ body:has([data-oh="cosmetics"]) {
 }
 
 [data-oh="cosmetics"] .products-top h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 48px;
   font-weight: 400;
   color: #323335;
@@ -403,7 +402,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .product-overlay h3 {
   color: #fff;
   margin-bottom: 10px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 28px;
   font-weight: 400;
   transition: transform 0.5s ease;
@@ -448,14 +447,14 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .benefits-content h3 {
   text-transform: capitalize;
   margin-bottom: 15px !important;
-  font-family: 'Inter';
+  font-family: var(--font-inter);
   font-size: clamp(7px, 2vw, 26px) !important;
   font-weight: 700 !important;
   transform: none !important;
 }
 
 [data-oh="cosmetics"] .benefits-content h3 {
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-cormorant-garamond), serif !important;
   color: #171717 !important;
   font-size: clamp(24px, 5vw, 32px) !important;
   text-transform: capitalize;
@@ -472,7 +471,7 @@ body:has([data-oh="cosmetics"]) {
 }
 
 [data-oh="cosmetics"] .benefits-content li {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   color: #2b2b2b;
   font-size: 15px;
   font-weight: 400;
@@ -530,7 +529,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .philosophy-top h2 {
   color: #2b2b2b;
   margin-bottom: 25px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 50px;
   font-weight: 400;
   line-height: 1.2;
@@ -584,7 +583,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .philosophy-card h3 {
   color: #2d2d2d;
   margin-bottom: 15px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 26px;
   font-weight: 400;
 }
@@ -608,7 +607,7 @@ body:has([data-oh="cosmetics"]) {
   color: #2d2d2d;
   letter-spacing: 1px;
   margin-bottom: 90px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 48px;
   font-weight: 400;
 }
@@ -690,7 +689,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .choose-item h3 {
   color: #2d2d2d;
   margin-bottom: 15px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 22px;
   font-weight: 700;
 }
@@ -730,7 +729,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .pp-top h2 {
   color: #2d2d2d;
     margin-left: 16px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 64px;
   font-weight: 300;
 }
@@ -804,7 +803,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .pp-content h3 {
   color: #2d2d2d;
   margin-bottom: 10px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 20px;
   font-weight: 400;
 }
@@ -860,7 +859,7 @@ body:has([data-oh="cosmetics"]) {
 
 [data-oh="cosmetics"] .sc-content h2 {
   margin-bottom: 28px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 50px;
   font-weight: 400;
   line-height: 1.1;
@@ -891,7 +890,7 @@ body:has([data-oh="cosmetics"]) {
 
 [data-oh="cosmetics"] .sc-features h3 {
   margin-bottom: 8px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 26px;
   font-weight: 400;
 }
@@ -924,7 +923,7 @@ body:has([data-oh="cosmetics"]) {
 [data-oh="cosmetics"] .faq-left h2 {
   color: #2d2d2d;
   margin-bottom: 25px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 57px;
   font-weight: 400;
   line-height: 1.2;
@@ -969,7 +968,7 @@ body:has([data-oh="cosmetics"]) {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
 }
 
 [data-oh="cosmetics"] .faq-question p {
@@ -991,7 +990,7 @@ body:has([data-oh="cosmetics"]) {
 
 [data-oh="cosmetics"] .faq-answer p {
   color: black !important;
-  font-family: 'Cormorant Garamond', serif !important;
+  font-family: var(--font-cormorant-garamond), serif !important;
   font-size: 20px;
   line-height: 1.6;
 }
@@ -1028,7 +1027,7 @@ body:has([data-oh="cosmetics"]) {
 
 [data-oh="cosmetics"] .bn-left h2 {
   margin-bottom: 20px;
-  font-family: Cormorant Garamond, serif;
+  font-family: var(--font-cormorant-garamond), serif;
   font-size: 60px;
   font-weight: 400;
   line-height: 1.15;
@@ -1149,7 +1148,7 @@ body:has([data-oh="cosmetics"]) {
   line-height: 1.6;
   color: white;
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 [data-oh="cosmetics"] .oh-foot__form {
@@ -1220,7 +1219,7 @@ body:has([data-oh="cosmetics"]) {
   color: #ffffff9c;
   font-size: 16px;
   transition: 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 [data-oh="cosmetics"] .oh-foot__list a:hover {
@@ -1234,7 +1233,7 @@ body:has([data-oh="cosmetics"]) {
   color: #ffffff9c;
   line-height: 1.5;
   font-size: 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
 }
 
 [data-oh="cosmetics"] .oh-foot__social {
@@ -1276,7 +1275,7 @@ body:has([data-oh="cosmetics"]) {
   margin: 60px auto 0;
   padding-top: 25px;
   padding-bottom: 48px;
-  font-family: Inter, sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-size: 18px;
   display: flex;
 }
@@ -1367,7 +1366,7 @@ body:has([data-oh="cosmetics"]) {
     color: #2b2b2b;
     width: clamp(450px, 48vw, 765px);
     margin-bottom: 30px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(36px, 3vw, 48px);
     font-weight: 400;
     line-height: 1.1;
@@ -1628,12 +1627,12 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .products-top h2 {
     color: #323335;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(11px, 3vw, 30px);
     font-weight: 400;
   }
 [data-oh="cosmetics"] .benefits-content h3 {
-    font-family: 'Cormorant Garamond', serif !important;
+    font-family: var(--font-cormorant-garamond), serif !important;
     color: #1F3D2E !important;
     font-size: clamp(24px, 5vw, 32px) !important;
     text-transform: capitalize;
@@ -1641,7 +1640,7 @@ body:has([data-oh="cosmetics"]) {
 }
 
 [data-oh="cosmetics"] .benefits-content li {
-    font-family: 'Inter', sans-serif !important;
+    font-family: var(--font-inter), sans-serif !important;
     color:#4a4a4a!important;
    font-size: clamp(13px, 2vw, 18px) !important;
     line-height: 1.4;
@@ -1786,7 +1785,7 @@ body:has([data-oh="cosmetics"]) {
   }
 
   [data-oh="cosmetics"] .faq-answer {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(18px, 2vw, 22px);
     color: black;
   }
@@ -2060,7 +2059,7 @@ body:has([data-oh="cosmetics"]) {
     max-width: 765px;
     width: 100%;
     margin-bottom: 30px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 61px;
     font-weight: 400;
     line-height: 1.1;
@@ -2072,7 +2071,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .products-top h2 {
     color: #323335;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 46px;
     font-weight: 400;
   }
@@ -2087,7 +2086,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .product-overlay h3 {
     color: #fff;
     margin-bottom: 10px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
    font-size: 23px;
     font-weight: 400;
   }
@@ -2102,7 +2101,7 @@ body:has([data-oh="cosmetics"]) {
     gap: clamp(16px, 2vw, 20px);
   }
 [data-oh="cosmetics"] .benefits-content h3 {
-    font-family: 'Cormorant Garamond', serif !important;
+    font-family: var(--font-cormorant-garamond), serif !important;
     color: #1F3D2E !important;
                   font-size: clamp(16px, 3vw, 26px) !important;
     text-transform: capitalize;
@@ -2110,7 +2109,7 @@ body:has([data-oh="cosmetics"]) {
 }
 
 [data-oh="cosmetics"] .benefits-content li {
-    font-family: 'Inter', sans-serif !important;
+    font-family: var(--font-inter), sans-serif !important;
     color:#4a4a4a !important;
    font-size: clamp(14px, 1vw, 25px) !important;
     line-height: 1.4;
@@ -2144,7 +2143,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .philosophy-top h2 {
     color: #2b2b2b;
     margin-bottom: 25px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 42px;
     font-weight: 400;
     line-height: 1.2;
@@ -2159,7 +2158,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .philosophy-card h3 {
     color: #2d2d2d;
     margin-bottom: 15px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 21px;
     font-weight: 400;
   }
@@ -2218,7 +2217,7 @@ body:has([data-oh="cosmetics"]) {
     color: #2d2d2d;
     letter-spacing: 1px;
     margin-bottom: 60px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(28px, 4vw, 42px);
     font-weight: 400;
   }
@@ -2289,7 +2288,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .pp-content h3 {
     color: #2d2d2d;
     margin-bottom: 10px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 38px;
     font-weight: 400;
   }
@@ -2356,7 +2355,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .sc-content h2 {
     margin-bottom: 25px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 400;
     line-height: 1.1;
@@ -2403,7 +2402,7 @@ body:has([data-oh="cosmetics"]) {
     justify-content: center;
     margin-bottom: clamp(25px, 2vw, 25px);
     margin-left: clamp(85px, 16vw, 330px);
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(55px, 5vw, 55px);
     font-weight: 400;
     line-height: 1.2;
@@ -2449,7 +2448,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .bn-left h2 {
     margin-bottom: 25px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(28px, 4vw, 42px);
     font-weight: 400;
     line-height: 1.1;
@@ -2529,7 +2528,7 @@ body:has([data-oh="cosmetics"]) {
     color: #fff;
     margin: 0;
     line-height: 1.5;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter), sans-serif;
   }
 
   [data-oh="cosmetics"] .logo2 {
@@ -2811,7 +2810,7 @@ body:has([data-oh="cosmetics"]) {
     color: #2b2b2b;
     max-width: 765px;
     margin-bottom: clamp(20px, 5vw, 30px);
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(32px, 8vw, 33px);
     font-weight: 400;
     line-height: 1.1;
@@ -2853,7 +2852,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .product-overlay h3 {
     color: #fff;
     margin-bottom: 10px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: 18px;
     font-weight: 400;
   }
@@ -2877,7 +2876,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .products-top h2 {
     color: #323335;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(32px, 8vw, 33px);
     font-weight: 400;
     margin-left: 0;
@@ -2909,7 +2908,7 @@ body:has([data-oh="cosmetics"]) {
   
     line-height: 1.4;
     margin-bottom: 8px !important;
-    font-family: Inter, sans-serif !important;
+    font-family: var(--font-inter), sans-serif !important;
 
 
     }
@@ -2957,7 +2956,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .philosophy-card h3 {
     color: #2d2d2d;
     margin-bottom: 8px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(16px, 4.5vw, 20px);
     font-weight: 500;
     line-height: 1.2;
@@ -3028,7 +3027,7 @@ body:has([data-oh="cosmetics"]) {
     color: #2d2d2d;
     letter-spacing: 1px;
     margin-bottom: 60px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(28px, 7vw, 33px);
     font-weight: 400;
     margin-left: 0;
@@ -3102,7 +3101,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .sc-content h2 {
     margin-bottom: 28px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(32px, 8vw, 42px);
     font-weight: 400;
     line-height: 1.1;
@@ -3142,7 +3141,7 @@ body:has([data-oh="cosmetics"]) {
     color: #2d2d2d;
     width: 100%;
     margin-bottom: 25px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(32px, 8vw, 42px);
     font-weight: 400;
     line-height: 1.2;
@@ -3211,7 +3210,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .bn-left h2 {
     margin-bottom: 1px;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(18px, 6.5vw, 26px);
     font-weight: 400;
     line-height: 1.2;
@@ -3241,7 +3240,7 @@ body:has([data-oh="cosmetics"]) {
   [data-oh="cosmetics"] .pp-top h2 {
     color: #2d2d2d;
     margin-left: 0;
-    font-family: Cormorant Garamond, serif;
+    font-family: var(--font-cormorant-garamond), serif;
     font-size: clamp(30px, 8vw, 36px);
     font-weight: 300;
     width: 100%;
@@ -3385,7 +3384,7 @@ body:has([data-oh="cosmetics"]) {
 
   [data-oh="cosmetics"] .oh-foot__list--touch li,
 [data-oh="cosmetics"] .oh-foot__list--touch li * {
-    font-family: 'Inter', sans-serif !important;
+    font-family: var(--font-inter), sans-serif !important;
     gap: 12px;
   }
 

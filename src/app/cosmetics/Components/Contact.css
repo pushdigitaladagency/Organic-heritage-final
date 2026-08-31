@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Outfit:wght@100..900&display=swap');
 
 [data-oh="cosmetics"] .contact-section {
     background: #f5f2ea;
@@ -37,7 +36,7 @@
 }
 [data-oh="cosmetics"] .contact-left h2 {
      color: #1f1f1f;
-    font-family: Libre Caslon Text, serif;
+    font-family: var(--font-libre-caslon-text), serif;
         font-size: 76px;
     font-weight: 400;
     line-height: 1.1;
@@ -101,7 +100,7 @@
   margin-bottom: 15px;
   color: #222;
   font-weight: 400;
-  font-family: "Libre Caslon Text", serif;
+  font-family: var(--font-libre-caslon-text), serif;
 }
 
 [data-oh="cosmetics"] .contact-error-text {
@@ -161,7 +160,7 @@
   font-size: 48px;
   font-weight: 500;
   color: #1d1d1d;
-  font-family: "Libre Caslon Text", serif;
+  font-family: var(--font-libre-caslon-text), serif;
   margin-bottom: 40px;
   line-height: 1.2;
       
@@ -464,7 +463,7 @@
 [data-oh="cosmetics"] .contact-card h3 {
     color: #222;
     margin-bottom: 15px;
-    font-family: Libre Caslon Text, serif;
+    font-family: var(--font-libre-caslon-text), serif;
     font-size: 30px;
     font-weight: 400;
 }
@@ -482,7 +481,7 @@
 [data-oh="cosmetics"] .contact-heading {
     color: #1d1d1d;
     margin-bottom: 40px;
-    font-family: Libre Caslon Text, serif;
+    font-family: var(--font-libre-caslon-text), serif;
     font-size: 53px;
     font-weight: 500;
     line-height: 1.2;
@@ -498,7 +497,7 @@
   }
 [data-oh="cosmetics"] .contact-left h2 {
     color: #1f1f1f;
-    font-family: Libre Caslon Text, serif;
+    font-family: var(--font-libre-caslon-text), serif;
     font-size: 66px;
     font-weight: 400;
     line-height: 1.1;
@@ -781,7 +780,7 @@
 [data-oh="cosmetics"] .contact-card h3 {
     color: #222;
     margin-bottom: 2px;
-    font-family: Libre Caslon Text, serif;
+    font-family: var(--font-libre-caslon-text), serif;
           font-size: 15px;
     font-weight: 400;
     text-align: left;

@@ -63,7 +63,7 @@ export default function Preloader() {
         {/* Logo */}
         <div className="preloader__logo-wrap">
           <img
-            src={asset("/images/Organic_logo.svg")}
+            src={asset("/images/svg/Organic_logo.svg")}
             alt="Organic Heritage Cosmetics"
             className="preloader__logo"
           />

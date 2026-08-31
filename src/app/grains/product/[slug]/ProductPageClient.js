@@ -6,6 +6,11 @@ import InnerPage from "../../Components/Product";
 import { useGrainsData } from "../../Components/DataProvider";
 import { BASE_PATH } from "../../lib/asset";
 
+const PRODUCT_SLUG_ALIASES = {
+  "mappillai-samba-health-mix": "mapilai-samba-health-mix",
+  "thuyamalli-idiyappam-flour": "thooyamalli-idiyappam-flour",
+};
+
 // Lifted verbatim out of ./page.js so that file can be a server component and
 // export generateMetadata — Next.js does not allow metadata exports from a
 // client component.
@@ -16,6 +21,7 @@ import { BASE_PATH } from "../../lib/asset";
 export default function ProductPageClient() {
   const router = useRouter();
   const { slug } = useParams();
+  const resolvedSlug = PRODUCT_SLUG_ALIASES[slug] || slug;
   const prefetchedData = useGrainsData(); // shared, fetched once in the layout
 
   const handleBack = () => router.push(BASE_PATH || "/");
@@ -23,7 +29,7 @@ export default function ProductPageClient() {
   return (
     <div>
       <Navbar onBack={handleBack} key={slug} />
-      <InnerPage initialSlug={slug} onBack={handleBack} prefetchedData={prefetchedData} />
+      <InnerPage initialSlug={resolvedSlug} onBack={handleBack} prefetchedData={prefetchedData} />
       <Footer />
     </div>
   );

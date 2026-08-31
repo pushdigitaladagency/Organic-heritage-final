@@ -77,7 +77,7 @@ return (
             <div className="oh-foot__logo">
               <div className="oh-header__logoMark oh-header__logoMark--dark">
                 {/* <span>O</span><i>H</i> */}
-                <img src={asset("/images/Organic_logo.svg")} alt="Organic Heritage" className="logo2 " />
+                <img src={asset("/images/svg/Organic_logo.svg")} alt="Organic Heritage" className="logo2 " />
               </div>
             </div>
 

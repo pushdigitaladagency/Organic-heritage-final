@@ -10,6 +10,8 @@ import {
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { asset } from "@/lib/asset";
+import { productImageSrc } from "../lib/productImages";
+import { requestScrollRevealRefresh } from "./ScrollRevealInit";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_API || "";
 const MAILER_URL = process.env.NEXT_PUBLIC_MAILER_API;
@@ -24,8 +26,8 @@ const CATCODE_TO_SLUG = {
 };
 
 export default function ProductDetails({
-  initialProduct          = null, // pre-fetched by page.js (server)
-  initialRelatedProducts  = [],   // pre-fetched by page.js via /api/categories/:slug/products
+  initialProduct = null, // pre-fetched by page.js (server)
+  initialRelatedProducts = [],   // pre-fetched by page.js via /api/categories/:slug/products
 }) {
   const params = useParams();
   const router = useRouter();
@@ -76,7 +78,7 @@ export default function ProductDetails({
   const [selectedQuantity, setSelectedQuantity] = useState(null);
   const [displayedQuantity, setDisplayedQuantity] = useState(null);
   const [isImageFading, setIsImageFading] = useState(false);
-  const [imgLoaded, setImgLoaded]         = useState(false);  // skeleton tracker
+  const [imgLoaded, setImgLoaded] = useState(false);  // skeleton tracker
   // Related products from the same category (fetched server-side)
   const [relatedProducts, setRelatedProducts] = useState(initialRelatedProducts);
 
@@ -101,14 +103,14 @@ export default function ProductDetails({
         productData.catcode
       );
       if (productData.variants && productData.variants.length > 0) {
-        if (productData.variants.includes("Pink"))       setSelectedQuantity("Pink");
+        if (productData.variants.includes("Pink")) setSelectedQuantity("Pink");
         else if (productData.variants.includes("pink")) setSelectedQuantity("pink");
-        else                                             setSelectedQuantity(productData.variants[0]);
+        else setSelectedQuantity(productData.variants[0]);
       } else if (productData.hero_section?.sizes?.length > 0) {
         const sizes = productData.hero_section.sizes;
-        if (sizes.includes("XL"))       setSelectedQuantity("XL");
+        if (sizes.includes("XL")) setSelectedQuantity("XL");
         else if (sizes.includes("xl")) setSelectedQuantity("xl");
-        else                           setSelectedQuantity(sizes[0]);
+        else setSelectedQuantity(sizes[0]);
       } else if (Array.isArray(productData.hero_section?.net_quantity) && productData.hero_section.net_quantity.length > 0) {
         const nq = productData.hero_section.net_quantity;
         setSelectedQuantity(nq.includes("100 ml") ? "100 ml" : nq[0]);
@@ -147,7 +149,7 @@ export default function ProductDetails({
     };
 
     fetchProduct();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   /* Sync scroll reveal with product render */
@@ -156,29 +158,7 @@ export default function ProductDetails({
     if (loading || !product) return;
 
     const frame = requestAnimationFrame(() => {
-      const els = document.querySelectorAll(
-        ".reveal, .reveal-up, .reveal-left, .reveal-right, .reveal-img"
-      );
-      if (!els.length) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
-      );
-
-      els.forEach((el) => {
-        el.classList.remove("is-visible");
-        observer.observe(el);
-      });
-
-      return () => observer.disconnect();
+      requestScrollRevealRefresh();
     });
 
     return () => cancelAnimationFrame(frame);
@@ -290,7 +270,7 @@ export default function ProductDetails({
   const hero = product.hero_section ?? {};
   const story = product.story_section ?? {};
 
- 
+
 
   return (
     <div className="product-page">
@@ -327,7 +307,7 @@ export default function ProductDetails({
           <div className={`product-img-skeleton${imgLoaded ? ' hidden' : ''}`} />
 
           <img
-            src={asset(`/images/${selectedQuantity ? product.image.replace('.svg', `-${selectedQuantity.replace(/\s/g, '')}.svg`) : product.image}`)}
+            src={productImageSrc(product.image || product.slug || product.name, selectedQuantity)}
             alt={product.name}
             fetchPriority="high"
             decoding="async"
@@ -341,7 +321,7 @@ export default function ProductDetails({
         <div className="product_content reveal-right">
 
           <div className="collection-badge">
-            <img src={asset("/images/Icon2.svg")} alt="" loading="lazy" decoding="async" />{hero.collection?.toUpperCase()}
+            <img src={asset("/images/svg/Icon2.svg")} alt="" loading="lazy" decoding="async" />{hero.collection?.toUpperCase()}
           </div>
 
           <h1 className="product-title">
@@ -362,57 +342,56 @@ export default function ProductDetails({
               <Star fill="#4F6D42" strokeWidth={0} />
               <Star fill="#4F6D42" strokeWidth={0} />
               <Star fill="#4F6D42" strokeWidth={0} />
-              
+
               {hero.rating}
             </div>
 
             <span className="rating-text">
-               {hero.reviews}
+              {hero.reviews}
             </span>
 
           </div>
 
           {/* VARIANT COLORS (Lipstick only) */}
- {product.variants && product.variants.length > 0 && (
-  <>
+          {product.variants && product.variants.length > 0 && (
+            <>
 
-    <div className="variant-row">
-      {product.variants.map((variant, i) => (
-        <button
-          key={i}
-          className={`variant-circle ${
-            selectedQuantity === variant ? "active" : ""
-          }`}
-          style={{
-            width: "44px",
-            height: "44px",
-            marginLeft: "10px",
-            borderRadius: "50%",
-            marginBottom: "14px",
-            backgroundColor: {
-              Pink: "#F4A7C1",
-              Red: "#B31B1B",
-              Brown: "#8B5A5A",
-              Maroon: "#5C0A0A",
-            }[variant] || "#ccc",
-            cursor: "pointer",
-          }}
-          onClick={() => {
-            if (variant === selectedQuantity) return;
-            setImgLoaded(false);
-            setIsImageFading(true);
-            setTimeout(() => {
-              setSelectedQuantity(variant);
-              setDisplayedQuantity(variant);
-              setIsImageFading(false);
-            }, 320);
-          }}
-          title={variant}
-        />
-      ))}
-    </div>
-  </>
-)}
+              <div className="variant-row">
+                {product.variants.map((variant, i) => (
+                  <button
+                    key={i}
+                    className={`variant-circle ${selectedQuantity === variant ? "active" : ""
+                      }`}
+                    style={{
+                      width: "44px",
+                      height: "44px",
+                      marginLeft: "10px",
+                      borderRadius: "50%",
+                      marginBottom: "14px",
+                      backgroundColor: {
+                        Pink: "#F4A7C1",
+                        Red: "#B31B1B",
+                        Brown: "#8B5A5A",
+                        Maroon: "#5C0A0A",
+                      }[variant] || "#ccc",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      if (variant === selectedQuantity) return;
+                      setImgLoaded(false);
+                      setIsImageFading(true);
+                      setTimeout(() => {
+                        setSelectedQuantity(variant);
+                        setDisplayedQuantity(variant);
+                        setIsImageFading(false);
+                      }, 320);
+                    }}
+                    title={variant}
+                  />
+                ))}
+              </div>
+            </>
+          )}
 
           {/* BUTTON */}
           <button
@@ -563,7 +542,7 @@ export default function ProductDetails({
 
             {story.benefits_list?.map((benefit, i) => (
               <span key={i}>
-                <img src={asset("/images/Icon3.svg")} alt="" loading="lazy" decoding="async" /> {benefit} <br />
+                <img src={asset("/images/svg/Icon3.svg")} alt="" loading="lazy" decoding="async" /> {benefit} <br />
               </span>
             ))}
 
@@ -698,7 +677,7 @@ export default function ProductDetails({
               disabled={isSubmitting}
             >
               <span>
-                <img src={asset("/images/Icon1.svg")} alt="" loading="lazy" decoding="async" />
+                <img src={asset("/images/svg/Icon1.svg")} alt="" loading="lazy" decoding="async" />
               </span>
 
               {isSubmitting ? "Sending..." : "Submit Enquiry"}
@@ -731,19 +710,19 @@ export default function ProductDetails({
         <div className="related-grid">
           {relatedProducts.length > 0
             ? relatedProducts.map((rp, i) => (
-                <Link
-                  href={`/cosmetics/products/${rp.slug }`}
-                  key={rp.slug || rp.product_id || i}
-                  style={{ textDecoration: "none" }}
-                >
-                  <div className="related-card">
-                    <div className="related-image shimmer-wrap">
-                      <img src={asset(`/images/${rp.image}`)} alt={rp.name} loading="lazy" decoding="async" className="shimmer-img" onLoad={e => e.currentTarget.classList.add('img-loaded')} />
-                    </div>
-                    <h4>{rp.name}</h4>
+              <Link
+                href={`/cosmetics/products/${rp.slug}`}
+                key={rp.slug || rp.product_id || i}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="related-card">
+                  <div className="related-image shimmer-wrap">
+                    <img src={productImageSrc(rp.image || rp.slug || rp.name)} alt={rp.name} loading="lazy" decoding="async" className="shimmer-img" onLoad={e => e.currentTarget.classList.add('img-loaded')} />
                   </div>
-                </Link>
-              ))
+                  <h4>{rp.name}</h4>
+                </div>
+              </Link>
+            ))
             : null
           }
         </div>

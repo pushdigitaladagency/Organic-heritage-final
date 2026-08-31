@@ -9,22 +9,22 @@ import "./product.css";
 const BASE_URL = process.env.NEXT_PUBLIC_PRODUC_URI || "";
 
 // Section icons are static (not provided by the API) — reused by index.
-const featureIcons = ["./Images/shield.svg", "./Images/hand.svg", "./Images/Antioxident.svg", "./Images/age.svg"];
-const ingredientIcons = ["./Images/shop.svg", "./Images/water.svg", "./Images/salt.svg", "./Images/coconut.svg"];
-const benefitIcons = ["./Images/shield.svg", "./Images/Antioxident.svg", "./Images/No preservatives.svg", "./Images/source.svg", "./Images/Stomach.svg", "./Images/fam.svg"];
-const storageIcons = ["./Images/store.svg", "./Images/seal.svg", "./Images/best.svg"];
+const featureIcons = ["./Images/icons/shield.png", "./Images/icons/hand.png", "./Images/icons/Antioxident.png", "./Images/icons/age.png"];
+const ingredientIcons = ["./Images/icons/shop.png", "./Images/icons/water.png", "./Images/icons/salt.png", "./Images/icons/coconut.png"];
+const benefitIcons = ["./Images/icons/shield.png", "./Images/icons/Antioxident.png", "./Images/icons/No preservatives.png", "./Images/icons/source.png", "./Images/icons/Stomach.png", "./Images/icons/fam.png"];
+const storageIcons = ["./Images/icons/store.png", "./Images/icons/seal.png", "./Images/icons/best.png"];
 
 // Static contact details (no API source).
 const contactInfo = [
-  { icon: "./Images/mobile.svg", alt: "phone", label: "PHONE", value: "+91 9940399388" },
-  { icon: "./Images/mail.svg", alt: "email", label: "EMAIL", value: " thirugailifestylecenter@gmail.com" },
-  { icon: "./Images/location.svg", alt: "location", label: "LOCATION", value: "Thirugai Life style Center, Thirukarugavur, Thanjavur - 614302",  },
+  { icon: "./Images/icons/mobile.png", alt: "phone", label: "PHONE", value: "+91 9940399388" },
+  { icon: "./Images/icons/mail.png", alt: "email", label: "EMAIL", value: " thirugailifestylecenter@gmail.com" },
+  { icon: "./Images/icons/location.png", alt: "location", label: "LOCATION", value: "Thirugai Life style Center, Thirukarugavur, Thanjavur - 614302", },
 ];
 
 /* ─────────────────────────────────────────────────────────────────────────────
  * Image with Shimmer Skeleton Loader
  * ───────────────────────────────────────────────────────────────────────────── */
-const ImageWithSkeleton = ({ src, alt, className = "" }) => {
+const ImageWithSkeleton = ({ src, alt, className = "", onError }) => {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef(null);
 
@@ -36,14 +36,27 @@ const ImageWithSkeleton = ({ src, alt, className = "" }) => {
     }
   }, [src]);
 
+  const isLoading = !loaded && src;
+  const hasImage = src && loaded;
+
   return (
-    <div className={`${!loaded && src ? "shimmer-bg" : ""} ${className}`} style={{ position: "relative", overflow: "hidden", width: "100%", height: "100%" }}>
+    <div
+      className={`${isLoading ? "shimmer-bg" : ""} ${className}`}
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "100%",
+        backgroundColor: !hasImage ? "#e8e8e8" : "transparent"
+      }}
+    >
       {src && (
         <img
           ref={imgRef}
           src={src}
           alt={alt}
           onLoad={() => setLoaded(true)}
+          onError={onError}
           style={{
             opacity: loaded ? 1 : 0,
             transition: "opacity 0.15s ease-in-out",
@@ -61,12 +74,24 @@ const ImageWithSkeleton = ({ src, alt, className = "" }) => {
 /* ---------- HELPERS ---------- */
 const list = (v) => (Array.isArray(v) ? v : []);
 
-// Turns a bare filename (e.g. "product-main.svg") into a /Images/ public path.
-// Already-absolute URLs (http//) or absolute paths (/) are returned unchanged.
+// Turns a bare product filename into a /Images/ public path.
+// Explicit pngimages paths stay PNG; other legacy filenames resolve to webp.
 const buildImageUrl = (filename) => {
   if (!filename) return "";
-  if (filename.startsWith("http") || filename.startsWith("/") || filename.startsWith("./")) return asset(filename);
-  return asset(`/Images/${filename}`);
+  if (filename.startsWith("http")) return asset(filename);
+
+  const normalizedFilename = filename.replace(/^\.?\//, "");
+  if (/^(Images\/)?pngimages\//i.test(normalizedFilename)) {
+    return asset(
+      normalizedFilename.startsWith("Images/")
+        ? `/${normalizedFilename}`
+        : `/Images/${normalizedFilename}`
+    );
+  }
+
+  const webpFilename = filename.replace(/\.(svg|png|jpe?g)$/i, ".webp");
+  if (webpFilename.startsWith("/") || webpFilename.startsWith("./")) return asset(webpFilename);
+  return asset(`/Images/${webpFilename}`);
 };
 
 const getProductName = (p) => p?.name || p?.title || p?.productName || "";
@@ -101,6 +126,7 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [activeImg, setActiveImg] = useState("");
+  const [failedThumbs, setFailedThumbs] = useState(new Set());
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeCategoryMenu, setActiveCategoryMenu] = useState(null);
   const dropdownRef = useRef(null);
@@ -222,6 +248,7 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
     const w = list(currentProduct?.weights);
     if (w.length) setSelectedSize((w.find((x) => x.popular) || w[0]).label);
     setIndex(0);
+    setFailedThumbs(new Set());
     if (currentProduct) setActiveImg(getProductImage(currentProduct));
   }, [currentProduct]);
 
@@ -231,7 +258,14 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
   const hl = p?.highlights_section;
   const stg = p?.storage;
 
-  const galleryThumbs = list(p?.images).slice(1).map(buildImageUrl);
+  const mainImageUrl = getProductImage(p);
+  const productImages = list(p?.images);
+  const galleryImages = productImages.slice(1);
+  const thumbnailImages = galleryImages.filter((img) => {
+    const url = buildImageUrl(img);
+    return url && url !== mainImageUrl && !failedThumbs.has(url);
+  });
+  const galleryThumbs = thumbnailImages.map(buildImageUrl);
   const weights = list(p?.weights).map((w) => w.label);
   const featureItems = list(p?.feature_highlights).map((f, i) => ({ icon: featureIcons[i % featureIcons.length], title: f.title, text: f.description }));
   const recipeIngredients = list(prep?.ingredients).map((g, i) => ({ icon: ingredientIcons[i % ingredientIcons.length], title: g.name, sub: g.note, qty: g.quantity }));
@@ -362,19 +396,19 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
     <>
       <section className="category-main">
         <button className="back-home-btn" onClick={onBack}>
-          <img src={asset("./Images/arrow.svg")} alt="back" className="back-arrow-icon" />
+          <img src={asset("./Images/icons/arrow.png")} alt="back" className="back-arrow-icon" />
           <span>Back to Home</span>
         </button>
         <div className="category-menu">
           {categoryMenu.map((menu, i) => (
-            <div 
-              className={`menu-item ${activeCategoryMenu === i ? "active" : ""}`} 
+            <div
+              className={`menu-item ${activeCategoryMenu === i ? "active" : ""}`}
               key={i}
               onClick={() => toggleCategoryMenu(i)}
             >
               <div className="menu-title">
                 <span>{menu.title}</span>
-                <img src={asset("./Images/arrow.svg")} alt="arrow" className={`arrowss ${activeCategoryMenu === i ? "rotate" : ""}`} />
+                <img src={asset("./Images/icons/arrow.png")} alt="arrow" className={`arrowss ${activeCategoryMenu === i ? "rotate" : ""}`} />
               </div>
               <div className={`dropdown ${menu.dropdownClass || ""} ${activeCategoryMenu === i ? "show" : ""}`}>
                 {menu.links.map((link, j) => (
@@ -390,16 +424,22 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
 
       <section className="product-page" id="products">
         <div className="product-container">
-          <div className="gallery product-reveal-left active">
-            <div className="main-image">
-              <ImageWithSkeleton key={activeImg || getProductImage(p)} className="main-image-slide" src={activeImg || getProductImage(p) || undefined} alt="product" />
+          <div className="gallery product-reveal-left active" style={{ display: "flex", gap: "20px", flexShrink: 1 }}>
+            <div className="main-image" style={{ minHeight: "736px", width: "575px", borderRadius: "20px", flexShrink: 0, overflow: "hidden" }}>
+              <ImageWithSkeleton key={activeImg || mainImageUrl} className="main-image-slide" src={activeImg || mainImageUrl || undefined} alt="product" />
             </div>
-            <div className="thumbs" >
-              {list(p?.images).slice(1).filter(img => img).map((img, i) => {
-                const url = buildImageUrl(img);
+            <div className="thumbs" style={{ display: "flex", flexDirection: "column", flexShrink: 0 }}>
+              {Array.from({ length: 5 }).map((_, i) => {
+                const img = galleryImages[i];
+                const url = img ? buildImageUrl(img) : "";
+                const isValid = url && !failedThumbs.has(url);
                 return (
-                  <div key={i} className={`thumb-wrapper ${activeImg === url ? "active-thumb" : ""}`} onClick={() => setActiveImg(url)}>
-                    <ImageWithSkeleton src={url} alt={`thumb-${i}`} />
+                  <div key={i} className={`thumb-wrapper ${activeImg === url && isValid ? "active-thumb" : ""}`} style={{ width: "133px", height: "133px", borderRadius: "15px", border: "1px solid #ddd", overflow: "hidden" }} onClick={() => isValid && setActiveImg(url)}>
+                    <ImageWithSkeleton
+                      src={isValid ? url : undefined}
+                      alt={`thumb-${i}`}
+                      onError={() => url && setFailedThumbs((failed) => new Set(failed).add(url))}
+                    />
                   </div>
                 );
               })}
@@ -408,7 +448,7 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
 
           <div className="product-info product-reveal-right active">
             <span className="category product-text-reveal product-delay-1 active">
-              <img src={asset("./Images/drop.svg")} alt="dropdown" className="dropdown-icon" />
+              <img src={asset("./Images/icons/drop.png")} alt="dropdown" className="dropdown-icon" />
               {p?.badge}
             </span>
 
@@ -433,7 +473,7 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
             <div className="size-options product-reveal active">
               {weights.map((size) => (
                 <div key={size} className="size-btn-wrapper">
-             
+
                   <button className={selectedSize === size ? "size-btn active" : "size-btn"} onClick={() => setSelectedSize(size)}>
                     {size}
                   </button>
@@ -668,7 +708,7 @@ export default function ProductDetails({ initialSlug, onBack, prefetchedData }) 
                 >
                   {formData.product || "Select a product"}
                   <img
-                    src={asset("./Images/arrow.svg")}
+                    src={asset("./Images/icons/arrow.png")}
                     alt="arrow"
                     className={`dropdown-arrow ${isDropdownOpen ? "open" : ""}`}
                   />

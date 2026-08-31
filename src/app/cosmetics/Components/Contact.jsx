@@ -155,7 +155,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
         we'll get back to you as soon as possible.
       </p>
 
-      <img src={asset("/images/contact-img.svg")} alt="Product" className="contact-image"/>
+      <img src={asset("/images/svg/contact-img.svg")} alt="Product" className="contact-image"/>
     </div>
 
     {/* <!-- Right Cards --> */}
@@ -164,7 +164,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
       <div className="contact-card">
         <div className="icon-circle">
-          <img src={asset("/images/msg.svg")} alt="Email Icon" className="icon-image"/>
+          <img src={asset("/images/svg/msg.svg")} alt="Email Icon" className="icon-image"/>
         </div>
         <h3>Email Us</h3>
         <p>vaiyamnaturals@gmail.com</p>
@@ -172,7 +172,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
       <div className="contact-card">
         <div className="icon-circle">
-          <img src={asset("/images/phone.svg")} alt="Phone Icon" className="icon-image"/>
+          <img src={asset("/images/svg/phone.svg")} alt="Phone Icon" className="icon-image"/>
         </div>
         <h3>Call Us</h3>
         <p>+91 9840264453</p>
@@ -180,7 +180,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
       <div className="contact-card">
         <div className="icon-circle">
-            <img src={asset("/images/location.svg")} alt="Location Icon" className="icon-image"/>
+            <img src={asset("/images/svg/location.svg")} alt="Location Icon" className="icon-image"/>
         </div>
         <h3>Visit Us</h3>
         <p>
@@ -191,7 +191,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 
       <div className="contact-card">
         <div className="icon-circle">
-            <img src={asset("/images/clock.svg")} alt="Clock Icon" className="icon-image"/>
+            <img src={asset("/images/svg/clock.svg")} alt="Clock Icon" className="icon-image"/>
         </div>
         <h3>Business Hours</h3>
         <p>
@@ -218,7 +218,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
   <div className="divider-line"></div>
 
   <div className="leaf-icon">
-    <img src={asset("/images/leaf.svg")} alt="leaf"/>
+    <img src={asset("/images/svg/leaf.svg")} alt="leaf"/>
   </div>
 
   <div className="divider-line"></div>
@@ -358,7 +358,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 <div className="privacy-box">
 
   <div className="privacy-icon">
-    <img src={asset("/images/icon.svg")} alt="privacy icon"/>
+    <img src={asset("/images/svg/icon.svg")} alt="privacy icon"/>
     <div className="privacy-content">
     <p style={{ color: "black" }}>
       We respect your privacy.<br/>
