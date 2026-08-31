@@ -101,7 +101,7 @@ export default function PrivacyPolicyPage() {
             <h2>How We Disclose Personal Information</h2>
             <p>We may disclose personal information to third parties where reasonably necessary to operate our business and provide the Services, subject to applicable law. This may include:</p>
             <ul>
-              <li>Shopify and other technology or service providers that support website hosting, payment processing, analytics, customer support, cloud services, order fulfillment and shipping.</li>
+              
               <li>Delivery and logistics providers when necessary to deliver products you order.</li>
               <li>Payment providers and financial service providers involved in processing transactions.</li>
               <li>Marketing or advertising service providers where applicable and permitted by law.</li>
@@ -111,13 +111,7 @@ export default function PrivacyPolicyPage() {
             </ul>
           </section>
 
-          <section className="pp-section">
-            <h2>Shopify</h2>
-            <p>
-              If the Services are hosted or powered by Shopify, Shopify may collect and process information about your access to and use of the Services in order to provide and improve its services. Information submitted through the store may be transmitted to and processed by Shopify and its service providers, including in countries other than your country of residence. Shopify's own privacy terms may apply to information it processes. You can review Shopify's consumer privacy information at privacy.shopify.com.
-            </p>
-          </section>
-
+       
           <section className="pp-section">
             <h2>Cookies and Similar Technologies</h2>
             <p>
