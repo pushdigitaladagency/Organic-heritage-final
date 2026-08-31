@@ -435,23 +435,29 @@ function Home() {
               <div className="oh-feat__products">
                 
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-1">
-                <Link href="/grains/product/karuppu-kavuni-rice">
+                <Link href="/grains#products">
                   <div className="oh-feat__productImg oh-feat__productImg--g1"  />
                    
-                  <span className="oh-feat__productLabel" > Karuppu Kavuni Rice</span></Link>
+                  <span className="oh-feat__productLabel" >Rice</span></Link>
                   
                 </div>
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-2">
-                  <div className="oh-feat__productImg oh-feat__productImg--g2"/>
-                  <span className="oh-feat__productLabel">Millets</span>
+                  <Link href="/grains#products2">
+                    <div className="oh-feat__productImg oh-feat__productImg--g2"/>
+                    <span className="oh-feat__productLabel">Flour</span>
+                  </Link>
                 </div>
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-3">
-                  <div className="oh-feat__productImg oh-feat__productImg--g3" />
-                  <span className="oh-feat__productLabel">Traditional Rice</span>
+                  <Link href="/grains#products3">
+                    <div className="oh-feat__productImg oh-feat__productImg--g3" />
+                    <span className="oh-feat__productLabel">Soup Mix</span>
+                  </Link>
                 </div>
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-4">
-                  <div className="oh-feat__productImg oh-feat__productImg--g4" />
-                  <span className="oh-feat__productLabel">Pulses</span>
+                  <Link href="/grains#products5">
+                    <div className="oh-feat__productImg oh-feat__productImg--g4" />
+                    <span className="oh-feat__productLabel">Cookies</span>
+                  </Link>
                 </div>
               </div>
 
@@ -462,20 +468,28 @@ function Home() {
             <article className="oh-feat__card oh-feat__card--sandal oh-reveal oh-reveal--from-right">
               <div className="oh-feat__products">
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-1">
-                  <div className="oh-feat__productImg oh-feat__productImg--c1" />
-                  <span className="oh-feat__productLabel">Lip Care</span>
+                  <Link href="/cosmetics/category/lip-care">
+                    <div className="oh-feat__productImg oh-feat__productImg--c1" />
+                    <span className="oh-feat__productLabel">Lip Care</span>
+                  </Link>
                 </div>
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-2">
-                  <div className="oh-feat__productImg oh-feat__productImg--c2" />
-                  <span className="oh-feat__productLabel">Skin Care</span>
+                  <Link href="/cosmetics/category/skin-care">
+                    <div className="oh-feat__productImg oh-feat__productImg--c2" />
+                    <span className="oh-feat__productLabel">Skin Care</span>
+                  </Link>
                 </div>
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-3">
-                  <div className="oh-feat__productImg oh-feat__productImg--c3" />
-                  <span className="oh-feat__productLabel">Hair Care</span>
+                  <Link href="/cosmetics/category/hair-care">
+                    <div className="oh-feat__productImg oh-feat__productImg--c3" />
+                    <span className="oh-feat__productLabel">Hair Care</span>
+                  </Link>
                 </div>
                 <div className="oh-feat__product oh-reveal oh-reveal--stagger-4">
-                  <div className="oh-feat__productImg oh-feat__productImg--c4" />
-                  <span className="oh-feat__productLabel">Hygiene</span>
+                  <Link href="/cosmetics/category/hygiene">
+                    <div className="oh-feat__productImg oh-feat__productImg--c4" />
+                    <span className="oh-feat__productLabel">Hygiene</span>
+                  </Link>
                 </div>
               </div>
 

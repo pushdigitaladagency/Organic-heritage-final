@@ -1085,28 +1085,28 @@ color: #faf7ee94;
 [data-oh="landing"] .oh-feat__productImg--g1 {
   background-image:
     linear-gradient(180deg, rgba(31, 61, 46, 0.0), rgba(31, 61, 46, 0.15)),
-    url("/images/product-grain-11.png"),
+    url("/grains/Images/landing-grains/rice.webp"),
     linear-gradient(160deg, #2a1f13, #5a3d20);
 }
 
 [data-oh="landing"] .oh-feat__productImg--g2 {
   background-image:
     /* linear-gradient(180deg, rgba(31, 61, 46, 0.0), rgba(31, 61, 46, 0.15)), */
-    url("/images/product-grain-22.png"),
+    url("/grains/Images/landing-grains/puttu-flour.webp"),
     linear-gradient(160deg, #c2a570, #8d6b3e);
 }
 
 [data-oh="landing"] .oh-feat__productImg--g3 {
   background-image:
     /* linear-gradient(180deg, rgba(31, 61, 46, 0.0), rgba(31, 61, 46, 0.15)), */
-    url("/images/product-grain-33.png"),
+    url("/grains/Images/landing-grains/soup-mix.webp"),
     linear-gradient(160deg, #f0e4c0, #a8895a);
 }
 
 [data-oh="landing"] .oh-feat__productImg--g4 {
   background-image:
     /* linear-gradient(180deg, rgba(31, 61, 46, 0.0), rgba(31, 61, 46, 0.15)), */
-    url("/images/product-grain-44.png"),
+    url("/grains/Images/landing-grains/cookies.webp"),
     linear-gradient(160deg, #a26d3a, #5a3a1c);
 }
 
